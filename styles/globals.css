@@ -24,3 +24,13 @@ a {
     background: black;
   }
 }
+.yellow{
+  color:#FBAC18;
+}
+.yellow-background{
+  background-color:#FBAC18;
+  color:#fff;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
