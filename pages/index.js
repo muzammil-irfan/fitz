@@ -1,6 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
 import BmiCalculatorSection from "../components/Home/BmiCalculatorSection";
+import DownloadAppSection from "../components/Home/DownloadAppSection";
+import FootballPlayerSection from "../components/Home/FootballPlayerSection";
+import ThingsSection from "../components/Home/ThingsSection";
+import ThingsSection2 from "../components/Home/ThingsSection2";
+import ThingsSection3 from "../components/Home/ThingsSection3";
 import Layout from "../components/Layout";
 import styles from "../styles/Home.module.css";
 
@@ -13,6 +18,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <BmiCalculatorSection />
+        <ThingsSection />
+        {/* <FootballPlayerSection /> */}
+        <ThingsSection2 />
+        <ThingsSection3 />
+        <DownloadAppSection />
     </>
   );
 }

@@ -4,7 +4,7 @@ import Heading from "../common/Heading";
 
 export default function BmiCalculatorSection() {
   return (
-    <div className="flex flex-col items-center gap-2 my-5">
+    <div className="flex flex-col items-center gap-2 mt-5">
       <Heading>
         Body Mass Index <span className="yellow">(BMI)</span> Calculator
       </Heading>

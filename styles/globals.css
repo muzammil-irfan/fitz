@@ -31,6 +31,9 @@ a {
   background-color:#FBAC18;
   color:#fff;
 }
+.light-gray-background{
+  background-color: #f8f8f8;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
