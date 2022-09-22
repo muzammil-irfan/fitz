@@ -3,6 +3,7 @@ import React from 'react'
 import CustomButton from '../common/CustomButton'
 import Heading from '../common/Heading'
 import {BsArrowRightShort} from 'react-icons/bs';
+import Text from '../common/Text'
 
 export default function ThingsSection2() {
   return (
@@ -14,12 +15,12 @@ export default function ThingsSection2() {
             <Heading >
             Lorem <span className='yellow'>ipsumsim</span> dolor amet
             </Heading>
-            <p className='text-slate-500'>
+            <Text className='text-slate-500'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.consectetur elit.
-            </p>
+            </Text>
             <div>
             <CustomButton arrow>
-              <p>See more </p>
+              <p className='w-16'>See more </p>
               <BsArrowRightShort  size="24px"  />
             </CustomButton>
             </div>

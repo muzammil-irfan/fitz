@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import CustomButton from "../common/CustomButton";
 import Heading from "../common/Heading";
+import Text from "../common/Text";
 import { BsArrowRightShort } from "react-icons/bs";
 
 export default function DownloadAppSection() {
@@ -14,12 +15,12 @@ export default function DownloadAppSection() {
         <Heading>
           <span className="yellow">Download</span><br /> The App
         </Heading>
-        <p className="text-slate-500">
+        <Text className="text-slate-500">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.consectetur
           elit.
-        </p>
-        <div className="flex items-center gap-3 my-2">
+        </Text>
+        <div className="flex items-center gap-3 my-2 w-1/2 ">
           <img src="/app-store-black-button.png" />
           <img src="/playstore-black-button.png" />
         </div>
