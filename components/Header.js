@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import {TbMenu} from 'react-icons/tb';
@@ -48,7 +47,7 @@ const headerLinks = [
   },
   {
     name: "BMI",
-    href: "/",
+    href: "/bmi",
   },
   {
     name: "Contact us",

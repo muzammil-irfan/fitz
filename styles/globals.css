@@ -27,6 +27,10 @@ a {
 .yellow{
   color:#FBAC18;
 }
+.yellow-border{
+  color:#FBAC18;
+  border: 1px solid #FBAC18;
+}
 .yellow-background{
   background-color:#FBAC18;
   color:#fff;

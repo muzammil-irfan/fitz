@@ -4,6 +4,7 @@ import Text from "../components/common/Text";
 import { HiOutlineMail } from "react-icons/hi";
 import { IoCallOutline } from "react-icons/io5";
 import CustomButton from "../components/common/CustomButton";
+import InputBox from "../components/common/InputBox";
 
 export default function ContactPage() {
   const initialValues = {
@@ -94,17 +95,4 @@ export default function ContactPage() {
     </div>
   );
 }
-const InputBox = ({ name, label, onChange, value, placeholder }) => {
-  return (
-    <div className="">
-      <p className="font-semibold">{label}</p>
-      <input
-        name={name}
-        className="w-2/3 md:w-1/2 border-slate-100 my-1 border p-2"
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-    </div>
-  );
-};
+
