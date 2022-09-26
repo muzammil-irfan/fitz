@@ -14,7 +14,7 @@ export default function BmiCalculatorSection() {
         whether a person is underweight, normal weight, overweight, or obese
         depending on what range the value falls between.
       </Text>
-      <CustomButton>BMI Calculator</CustomButton>
+      <CustomButton className={"m-2"}>BMI Calculator</CustomButton>
       <img src="/home/bmi-calculator.png" width="300px"/>
     </div>
   );

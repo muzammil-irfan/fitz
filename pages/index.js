@@ -12,6 +12,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import BannerSection from "../components/Home/BannerSection";
 import LookingForSection from "../components/Home/LookingForSection";
+import BlogSection from "../components/Home/BlogSection";
 
 export default function Home() {
   return (
@@ -23,9 +24,12 @@ export default function Home() {
       </Head>
         <BannerSection />
         {/* <LookingForSection /> */}
+        <BlogSection 
+          
+        />
         <BmiCalculatorSection />
         <ThingsSection />
-        {/* <FootballPlayerSection /> */}
+        <FootballPlayerSection />
         <ThingsSection2 />
         <ThingsSection3 />
         <DownloadAppSection />

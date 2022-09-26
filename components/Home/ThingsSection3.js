@@ -4,6 +4,7 @@ import CustomButton from '../common/CustomButton'
 import Heading from '../common/Heading'
 import {BsArrowRightShort} from 'react-icons/bs';
 import Text from '../common/Text';
+import SeeMoreButton from '../common/SeeMoreButton';
 
 export default function ThingsSection3() {
   return (
@@ -16,10 +17,7 @@ export default function ThingsSection3() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.consectetur elit.
             </Text>
             <div>
-            <CustomButton arrow> 
-              <p className="w-16">See more </p>
-              <BsArrowRightShort size="24px"  />
-            </CustomButton>
+            <SeeMoreButton />
             </div>
         </div>
         <div className='aspect-square relative w-2/5'  >
