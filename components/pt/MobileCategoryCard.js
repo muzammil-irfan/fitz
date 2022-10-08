@@ -35,7 +35,7 @@ export default function MobileCategoryCard({
         </div>
         <div className="py-2 flex gap-2 items-center">
           <BiDollarCircle />
-          <p>{amount}</p>
+          <p>{amount} JOD/hr</p>
         </div>
         <div className="py-2 flex gap-2 items-center">
           <TbWorld />

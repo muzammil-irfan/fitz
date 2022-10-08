@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function BlogCard({ imageSrc, category, title, description }) {
   return (
-    <div className="m-5 shadow-md h-[450px]">
+    <div className="m-5 shadow-md h-[450px] w-[250px]">
       <div className="relative ">
         <Image
           src={imageSrc}
@@ -15,7 +15,7 @@ export default function BlogCard({ imageSrc, category, title, description }) {
       <div className="text-left p-3">
         <p className="yellow my-2">{category.toUpperCase()}</p>
         <h3 className="font-bold text-xl">{title}</h3>
-        <p className="py-5 text-slate-500 text-lg">{description}</p>
+        <p className="py-5 text-slate-500 text-sx md:text-md">{description}</p>
       </div>
     </div>
   );

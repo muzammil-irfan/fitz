@@ -6,10 +6,10 @@ import Text from "../common/Text";
 export default function BmiCalculatorSection() {
   return (
     <div className="flex px-5 flex-col items-center gap-2 mt-5">
-      <Heading>
+      <Heading className={"text-3xl sm:text-center"}>
         Body Mass Index <span className="yellow">(BMI)</span> Calculator
       </Heading>
-      <Text className="text-center">
+      <Text className="sm:text-center">
         The value obtained from the calculation of BMI is used to categorize
         whether a person is underweight, normal weight, overweight, or obese
         depending on what range the value falls between.

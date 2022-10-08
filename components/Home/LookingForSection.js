@@ -1,7 +1,8 @@
-import React from 'react'
+import React,{ useEffect } from 'react'
 import Heading from '../common/Heading'
 import Slider from "react-slick";
-
+import backendHost from '../../utils/backendHost';
+import axios from 'axios';
 export default function LookingForSection() {
     const setting = {
         dots: true,
@@ -37,12 +38,21 @@ export default function LookingForSection() {
           }
         ]
       };
+        useEffect(()=>{
+          axios.get(`${backendHost}/category/`)
+          .then(res=>{
+            console.log(res);
+          })
+          .catch(err=>{
+            console.log(err);
+          });
+        },[])
   return (
-    <div className='flex justify-center'>
-        <Heading >
-            What are you <span className='yellow'>looking for?</span> 
+    <div className='px-2'>
+        <Heading className={"md:text-center"}>
+            What are you <span className='yellow block md:inline'>looking for?</span> 
         </Heading>
-
+        
     </div>
   )
 }

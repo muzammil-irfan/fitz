@@ -31,8 +31,8 @@ export default function BMIPage() {
         required. Refer to the table below to see the different categories
         based on BMI that are used by the calculator.`}
       />
-      <DesktopSection />
-      <MobileSection />
+      {/* <DesktopSection /> 
+      <MobileSection />*/}
       <UnderweightSection />
     </div>
   );

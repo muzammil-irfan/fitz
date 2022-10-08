@@ -1,6 +1,7 @@
 import React from 'react'
 import Slider from "react-slick";
 import Image from 'next/image';
+import {BsChevronCompactRight} from "react-icons/bs";
 
 export default function BannerSection() {
     const settings = {
@@ -11,8 +12,7 @@ export default function BannerSection() {
         slidesToScroll: 1
       };
   return (
-    <>
-        <div>
+        <div className='overflow-hidden'>
         <Slider {...settings}>
           {
             bannerData.map((item,index)=>{
@@ -27,7 +27,6 @@ export default function BannerSection() {
           }
         </Slider>
       </div>
-    </>
   )
 }
 const bannerData = [
