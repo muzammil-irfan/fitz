@@ -23,7 +23,7 @@ export default function Home() {
         <link rel="icon" href="/logo-small.png" />
       </Head>
         <BannerSection />
-        {/* <LookingForSection /> */}
+        <LookingForSection />
         <BlogSection />
         <BmiCalculatorSection />
         <ThingsSection />
