@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function BlogCard({ imageSrc, category, title, description }) {
   return (
-    <div className="m-5 shadow-md h-[450px] w-[250px]">
+    <div className="m-2 md:m-4 shadow-md h-[450px] ">
       <div className="relative ">
         <Image
           src={imageSrc}

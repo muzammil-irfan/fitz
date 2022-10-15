@@ -8,7 +8,6 @@ import { CategoriesContext } from "./context/categories";
 export default function Header() {
   const {categories} = useContext(CategoriesContext)
   const [sidebar,setSidebar] = useState(false);
-  console.log(categories)
   return (
     <div className="py-5 shadow-sm">
       <div className="flex md:hidden justify-between px-5 items-center container mx-auto">
