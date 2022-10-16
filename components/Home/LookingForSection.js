@@ -45,7 +45,7 @@ export default function LookingForSection() {
   };
   useEffect(() => {//category/
     axios
-      .get(`${backendHost}/blog/`, {
+      .get(`${backendHost}/blog`, {
         headers: {
           "Accept-Language": "en",
           "Content-Type": "application/json",
