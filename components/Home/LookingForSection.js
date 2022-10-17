@@ -40,7 +40,7 @@ export default function LookingForSection() {
     ],
   };
   useEffect(() => {//category/
-    getCategories();
+    // getCategories();
     axios.get(`${backendHost}/category`)
     .then(res=>{
       console.log("got,",res);
@@ -49,7 +49,7 @@ export default function LookingForSection() {
       console.log("err",err)
     })
   }, []);
-  console.log(categories)
+  // console.log(categories)
   return (
     <div className="p-2 mb-5 overflow-hidden">
       <Heading className={"text-3xl md:text-center my-4 lg:mb-8"}>
