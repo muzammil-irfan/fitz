@@ -5,6 +5,11 @@ import { HiOutlineMail } from "react-icons/hi";
 import { IoCallOutline } from "react-icons/io5";
 import CustomButton from "../components/common/CustomButton";
 import InputBox from "../components/common/InputBox";
+import axios from "axios";
+import backendHost from "../utils/backendHost";
+import {toast} from 'react-toastify';
+import CommonToast from "../components/common/CommonToast";
+
 
 export default function ContactPage() {
   const initialValues = {
@@ -20,10 +25,35 @@ export default function ContactPage() {
     setValues({ ...values, [name]: value });
   };
   const handleSubmit = ()=>{
-    console.log("submit",values);
+    let submit = false;
+    for(let keys in values){
+     submit = values[keys].length !== 0
+    }
+    if(submit){
+      const obj = {
+        name: values.name,
+        phone_number: values.phoneNumber,
+        subject: values.subject,
+        email: values.email,
+        message: values.message
+      }
+      axios.post(`${backendHost}/info/contact-us`,obj)
+      .then(res=>{      
+        setValues(initialValues);
+        toast.success("Message sended successfully");
+      })
+      .catch(err=>{
+        console.log(err);
+        toast.error("Request failed. Please try again");
+      })
+    } else {
+      toast.error("Please submit all the fields carefully")
+    }
   };
   return (
     <div className="pl-2 md:pl-0 py-3">
+      <CommonToast />
+      
       <div className="my-5">
         <Heading>
           We&apos;d <span className="yellow">Love</span> To Hear From You

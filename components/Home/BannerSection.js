@@ -19,7 +19,7 @@ export default function BannerSection() {
                 return (
                     <div key={item.url} >
                         <div className="relative bottom-10 aspect-video">
-                            <Image src={item.url} alt={item.alt} layout='fill' objectFit='contain' />
+                            <Image src={item.url} alt={item.alt} layout='fill' objectFit='contain' priority={index==0} />
                         </div>  
                     </div>
                 )

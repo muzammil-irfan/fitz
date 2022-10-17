@@ -6,7 +6,7 @@ import Text from "../common/Text";
 export default function BmiCalculatorSection() {
   return (
     <div className="flex px-5 flex-col items-center gap-2 mt-5">
-      <Heading className={"text-3xl sm:text-center"}>
+      <Heading className={"text-3xl sm:text-center my-4 lg:my-10"}>
         Body Mass Index <span className="yellow">(BMI)</span> Calculator
       </Heading>
       <Text className="sm:text-center">

@@ -4,7 +4,6 @@ import BlogCard from "../../components/common/BlogCard";
 import backendHost from "../../utils/backendHost";
 
 export default function Blog({ posts }) {
-  
   return (
     <div className="grid md:grid-cols-3 my-5">
       {posts.length > 0 ? (
@@ -27,7 +26,27 @@ export default function Blog({ posts }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticPaths() {
+
+    const returnObj = {
+        paths:[] ,
+        fallback: false
+    };
+    return axios
+    .get(`${backendHost}/blog`)
+    .then((res) => {
+      const arr = res.data.length > 0 ? res.data.map(item=>({params:{slug:item.slug}})) : {params:{}}
+      returnObj.paths = [...arr];
+      return returnObj;
+    })
+    .catch((err) => {
+      console.log(err.response.data);
+      return returnObj;
+    });
+};
+
+export async function getStaticProps(context) {
+    console.log(context)
   const props = {
     posts: [],
   };

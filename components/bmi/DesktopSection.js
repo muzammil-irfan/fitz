@@ -7,7 +7,7 @@ import OverweightSection from './OverweightSection'
 
 export default function DesktopSection() {
   return (
-    <div className='hidden md:flex justify-between'>
+    <div className='invisible md:visible justify-between'>
         <div className='w-1/2'>
             <AdultTableContent />
             <ChildrenTableContent />

@@ -1,15 +1,18 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-export default function BlogCard({ imageSrc, category, title, description }) {
+export default function BlogCard({ href,imageSrc, category, title, description }) {
   return (
-    <div className="m-2 md:m-4 shadow-md h-[450px] ">
+    <Link href={href} passHref>
+    <div className="m-2 shadow-md h-[450px] " style={{cursor:"pointer"}}>
       <div className="relative ">
         <Image
           src={imageSrc}
           layout="responsive"
-          width="400px"
-          height="200px"
+          width="200px"
+          height="100px"
+          alt=""
         />
       </div>
       <div className="text-left p-3">
@@ -18,5 +21,6 @@ export default function BlogCard({ imageSrc, category, title, description }) {
         <p className="py-5 text-slate-500 text-sx md:text-md">{description}</p>
       </div>
     </div>
+    </Link>
   );
 }

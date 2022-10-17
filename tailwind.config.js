@@ -8,7 +8,11 @@ module.exports = {
     "./components/**/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "brand":"#FBAC18"
+      }
+    },
   },
   plugins: [],
 }

@@ -7,7 +7,7 @@ import OverweightSection from './OverweightSection'
 
 export default function MobileSection() {
   return (
-    <div className='md:hidden'>
+    <div className='md:invisible'>
         <AdultTableContent />
         <AdultTable />
         <ChildrenTableContent />

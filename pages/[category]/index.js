@@ -3,12 +3,17 @@ import Link from 'next/link';
 import React from 'react'
 import Heading from '../../components/common/Heading';
 import Text from '../../components/common/Text';
+import titleToSlugConverter from '../../utils/titleToSlugConverter';
+import categoriesData from '../../utils/categoriesData';
+import axios from 'axios';
+import backendHost from '../../utils/backendHost';
 
-export default function PT() {
+export default function Category({data}) {
+    console.log(data);
   return (
     <div className='p-2'>
         {/* Home / PTs */}
-        <p className='yellow py-1'>{categoriesData.length} CATEGORIES</p>
+        <p className='yellow py-1'>{data.length} CATEGORIES</p>
         <Heading >
             PTs
         </Heading>
@@ -19,14 +24,14 @@ export default function PT() {
             {
                 categoriesData.map(item=>{
                     return(//"/pt" + item.href
-                        <Link href={"/pt/fitness"} key={item.name}>
+                        <Link href={`/pt/fitness`} key={item.title}>
                             <a>
                                 <div  className="shadow-md" >
                                     <div className='aspect-square relative'>
-                                        <Image src={"/pt" + item.src} alt={item.name} layout="fill" />
+                                        <Image src={`https://${item.img}`} alt={item.title} layout="fill" />
                                     </div>
                                     <div>
-                                        <p className='text-center py-2' >{item.name}</p>
+                                        <p className='text-center py-2' >{item.title}</p>
                                     </div>
                                 </div>
                             </a>
@@ -39,6 +44,65 @@ export default function PT() {
   )
 }
 
+export async function getStaticPaths() {
+    const returnObj = {
+        paths:[] ,
+        fallback: false
+    };
+    categoriesData.map(item=>{
+        const obj = {
+            params: {
+                category: titleToSlugConverter(item.title)
+            }
+        }
+        returnObj.paths.push(obj)
+    });
+    return returnObj;
+    /*
+    return axios
+    .get(`${backendHost}/blog`)
+    .then((res) => {
+      const arr = res.data.length > 0 ? res.data.map(item=>({params:{slug:item.slug}})) : {params:{}}
+      returnObj.paths = [...arr];
+      return returnObj;
+    })
+    .catch((err) => {
+      console.log(err.response.data);
+      return returnObj;
+    });*/
+};
+
+export async function getStaticProps(context) {
+    const {category } = context.params;
+  const props = {
+    data: [],
+  };
+  let id;
+  categoriesData.map(item=>{
+    if(titleToSlugConverter(item.title) === category){
+        id = item.id;
+    }
+  });
+
+  
+  return axios
+    .get(`${backendHost}/category/${id}`)
+    .then((res) => {
+      props.data = [...res.data];
+      return {
+        props,
+      };
+    })
+    .catch((err) => {
+      console.log(err.response.data);
+      return {
+        props,
+      };
+    });
+
+}
+
+/*
 export const categoriesData = [
     {
         name:"MMA",
@@ -105,4 +169,4 @@ export const categoriesData = [
         href:"/kickboxing",
         src:"/kickboxing.png"
     },
-]
+]*/

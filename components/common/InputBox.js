@@ -6,6 +6,8 @@ export default function InputBox({
   onChange,
   value,
   placeholder,
+  type,
+  checked
 }) {
   return (
     <div className="">
@@ -16,6 +18,8 @@ export default function InputBox({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        type={type}
+        checked={checked}
       />
     </div>
   );
