@@ -30,6 +30,7 @@ export default function Blog({ posts }) {
 export async function getStaticProps() {
   const props = {
     posts: [],
+    revalidate:10
   };
   return axios
     .get(`${backendHost}/blog`)

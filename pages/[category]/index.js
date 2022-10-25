@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react'
+import React, { useEffect } from 'react'
 import Heading from '../../components/common/Heading';
 import Text from '../../components/common/Text';
 import titleToSlugConverter from '../../utils/titleToSlugConverter';
@@ -10,6 +10,15 @@ import backendHost from '../../utils/backendHost';
 
 export default function Category({data}) {
     console.log(data);
+    useEffect(()=>{
+        axios.get(`${backendHost}/category`)
+        .then(res=>{
+            console.log(res);
+        })
+        .catch(err=>{
+            console.log("err",err);
+        })
+    },[]);
   return (
     <div className='p-2'>
         {/* Home / PTs */}

@@ -1,10 +1,36 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import DesktopCategoryCard from '../../../components/pt/DesktopCategoryCard'
 import Heading from '../../../components/common/Heading'
 import Text from '../../../components/common/Text'
 import MobileCategoryCard from '../../../components/pt/MobileCategoryCard'
+import axios from 'axios';
+import backendHost from '../../../utils/backendHost'
 
-export default function PTCategory() {
+export default function SubCategory() {
+    useEffect(()=>{
+        axios.get(`${backendHost}/category`)
+        .then(res=>{
+            console.log("category",res);
+        })
+        .catch(err=>{
+            console.log("category",err);
+        })
+        axios.get(`${backendHost}/partner/132`)
+        .then(res=>{
+            console.log("partner",res);
+        })
+        .catch(err=>{
+            console.log("partner",err);
+        })
+        axios.get(`${backendHost}/partner/view`,{params:{partner_id:1,category_id:132}})
+        .then(res=>{
+            console.log("partner view",res);
+        })
+        .catch(err=>{
+            console.log("partner view",err);
+        })
+    },[])
+    return(<><p><b>aaslmdsdlkcms</b></p><p><b><i>dscdsklcmsd</i></b></p><p><b><i>cdscdsc<sup>cdscdscsd</sup></i></b></p><p><b><i><sup><br /></sup></i></b></p><p><b><i><sup style={{backgrounColor: "rgb(255, 255, 0)"}}><font color="#000000">cdscdscdscdscds</font></sup></i></b></p><table class="table table-bordered"><tbody><tr><td>cdsdcdscnj</td><td>cdscsdcd</td><td>cdscddsc</td><td>csdcdsc</td></tr><tr><td>csdcdscds</td><td>cddscds</td><td>dscdscdsc</td><td>cscdscds</td></tr></tbody></table><p><b><i><sup><br /></sup></i></b></p></>)
   return (
     <div className='p-2'>
         {/* Home / PTs */}
@@ -47,16 +73,54 @@ export default function PTCategory() {
     </div>
   )
 }
-// const 
-// export async function getStaticPaths() {
 
-//   // Get the paths we want to pre-render based on posts
-//   const paths = categoriesData.map((item) => ({
-//     params: { category: item.href },
-//   }))
+export async function getStaticPaths() {
+    const returnObj = {
+      paths: [{params:{category:"/pts",subcategory:"/fitness"}}],
+      fallback: true,
+    };
+    return returnObj;
+    // return axios
+    //   .get(`${backendHost}/category`)
+    //   .then((res) => {
+    //     const arr =
+    //       res.data.length > 0
+    //         ? res.data.map((item) => ({ params: { slug: item.slug } }))
+    //         : { params: {} };
+    //     returnObj.paths = [...arr];
+    //     return returnObj;
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.response.data);
+    //     return returnObj;
+    //   });
+  }
+  
+  export async function getStaticProps(context) {
+    const { params } = context;
+    const props = {
+      posts: {},
+      revalidate: 10
+    };
+    return {props};
+    // return axios
+    //   .get(`${backendHost}/blog/view`, { params })
+    //   .then((res) => {
+    //     props.posts = { ...res.data };
+    //     return {
+    //       props,
+    //     };
+    //   })
+    //   .catch((err) => {
+    //     console.log("err", err);
+  
+    //     return {
+    //       notFound: true,
+    //     };
+    //   });
+  }
+  
 
-//   return { paths, fallback: false }
-// }
 const profilesData = [
     {
         title:"Marcelo joe Ayala ",
