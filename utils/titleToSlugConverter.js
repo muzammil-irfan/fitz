@@ -1,5 +1,4 @@
 const titleToSlugConverter = (e)=>{
-    console.log(e);
     const lowerCase = e.toLowerCase();
     if(e.includes(" ")){
         return lowerCase.split(" ").join("-");

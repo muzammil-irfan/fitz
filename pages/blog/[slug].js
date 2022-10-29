@@ -1,30 +1,28 @@
 import axios from "axios";
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import BlogCard from "../../components/common/BlogCard";
+import BlogSection from "../../components/Home/BlogSection";
 import backendHost from "../../utils/backendHost";
 
-export default function Blog({ posts }) {
-  useEffect(() => {
-    axios
-      .get(`${backendHost}/blog/view?slug=since-yesterday`)
-      .then((res) => {
-        console.log("api res", res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    console.log("props", posts);
-  }, []);
+export default function Blog({ post }) {
+  if(!post){return <div>Loading...</div>}
   return (
-    <div className="grid md:grid-cols-3 my-5">
-      {/* <BlogCard
-        key={item.id}
-        href={`/blog/${item.slug}`}
-        imageSrc={item.media[0]}
-        category={"No Category"}
-        title={item.title}
-        description={"There is not any short description in the data"}
-      /> */}
+    <div>
+      <div className="flex flex-col sm:flex-row-reverse sm:justify-around px-3">
+        <div className="aspect-square m-2 relative sm:w-1/2 sm:m-5 max-w-[450px] " >
+          <Image 
+          src={post.media[0] && post.media[0]}
+          layout="fill"
+          />
+        </div>
+          <div className="sm:w- "> 
+            <p className="yellow my-2">{"No category".toUpperCase()}</p>
+            <div dangerouslySetInnerHTML={{__html:post.content}} />
+          </div>
+  
+      </div>
+      <BlogSection />
     </div>
   );
 }
@@ -53,13 +51,13 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const { params } = context;
   const props = {
-    posts: {},
+    post: {},
     revalidate: 10
   };
   return axios
     .get(`${backendHost}/blog/view`, { params })
     .then((res) => {
-      props.posts = { ...res.data };
+      props.post = { ...res.data };
       return {
         props,
       };

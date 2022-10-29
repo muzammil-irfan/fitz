@@ -13,8 +13,14 @@ import "slick-carousel/slick/slick-theme.css";
 import BannerSection from "../components/Home/BannerSection";
 import LookingForSection from "../components/Home/LookingForSection";
 import BlogSection from "../components/Home/BlogSection";
+import axios from "axios";
+import backendHost from "../utils/backendHost";
+import idSlugConverter from "../utils/idSlugConverter";
+import { useEffect } from "react";
 
-export default function Home() {
+export default function Home({categories}) {
+  
+  
   return (
     <div className="">
       <Head>
@@ -23,7 +29,7 @@ export default function Home() {
         <link rel="icon" href="/logo-small.png" />
       </Head>
         <BannerSection />
-        <LookingForSection />
+        <LookingForSection data={categories} />
         <BlogSection />
         <BmiCalculatorSection />
         <ThingsSection />
@@ -33,4 +39,20 @@ export default function Home() {
         <DownloadAppSection />
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const props = {
+    categories: [],
+  };
+  try {
+    //To obtain slug from category
+    const categories = await axios.get(`${backendHost}/category`);
+    props.categories = [...categories.data];
+    
+    return {props};
+  } catch (err) {
+    console.log(err);
+    return {props};
+  }
 }

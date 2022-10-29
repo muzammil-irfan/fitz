@@ -28,7 +28,7 @@ export default function MobileCategoryCard({
         </div>
       </div>
       <div className="p-5">
-        <p className="">{description}</p>
+        <p className="break-all">{description}</p>
         <div className="py-2 flex gap-2 items-center">
           <BiMap />
           <p>{location}</p>

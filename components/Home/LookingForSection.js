@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from 'next/link';
 import titleToSlugConverter from "../../utils/titleToSlugConverter";
 
-export default function LookingForSection() {
+export default function LookingForSection({data}) {
   const { categories,getCategories } = useContext(CategoriesContext);
 
   const settings = {
@@ -59,7 +59,7 @@ export default function LookingForSection() {
       <div className="py-5 lg:px-5">
         <Slider {...settings}>
           {
-            categories.map(item=>{
+            data.map(item=>{
               return <SkewedCard href={`/${titleToSlugConverter(item.title)}`} name={item.title} image={"https://"+item.img} key={item.id} id={item.id} />
             })
           }

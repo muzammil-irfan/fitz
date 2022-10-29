@@ -9,6 +9,7 @@ export default function Blog({ posts }) {
     <div className="grid md:grid-cols-3 my-5">
       {posts.length > 0 ? (
         posts.map((item) => {
+          console.log(item)
           return (
             <BlogCard
               key={item.id}
