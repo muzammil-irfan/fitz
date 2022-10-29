@@ -3,12 +3,16 @@ import React from 'react'
 import {BsFacebook,BsInstagram} from 'react-icons/bs';
 import { BiMap,BiDollarCircle } from 'react-icons/bi';
 import {TbWorld} from 'react-icons/tb';
+import Link from 'next/link';
+import titleToSlugConverter from '../../utils/titleToSlugConverter';
 
-export default function DesktopCategoryCard({imageAlt,imageSrc,title,description,location,amount,language}) {
+export default function DesktopCategoryCard({href,imageAlt,imageSrc,title,description,location,amount,language}) {
   return (
-    <div className='hidden sm:flex shadow-md m-4'>
+    <div className='hidden sm:flex shadow-md m-4' style={{cursor:"pointer"}}>
+        <Link href={href}>
+            <a>
         <div className='w-2/3 xl:w-1/4  relative aspect-square'>
-            <Image src={"/pt/fitness"+imageSrc} alt={imageAlt} layout="fill"  />
+            <Image src={imageSrc} alt={imageAlt} layout="fill"  />
         </div>
         <div className='p-5'>
             <div className='flex justify-between '>
@@ -34,6 +38,8 @@ export default function DesktopCategoryCard({imageAlt,imageSrc,title,description
                 <p>{language}</p>               
             </div>    
         </div>
+            </a>
+        </Link>
 
     </div>
   )

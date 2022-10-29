@@ -4,8 +4,9 @@ import React,{useContext, useState} from "react";
 import { TbMenu } from "react-icons/tb";
 import { MdOutlineClose } from "react-icons/md";
 import { CategoriesContext } from "./context/categories";
+import titleToSlugConverter from "../utils/titleToSlugConverter";
 
-export default function Header() {
+export default function Header({data}) {
   const {categories} = useContext(CategoriesContext)
   const [sidebar,setSidebar] = useState(false);
   return (
@@ -42,7 +43,7 @@ export default function Header() {
         {
           categories.map(item=>{
             return(
-              <Link href={item.title.toLowerCase().split(" ").join("")} key={item.id} >
+              <Link href={titleToSlugConverter(item.title)} key={item.id} >
                 <a>
                   <p className="my-3"onClick={()=>{setSidebar(false)}}>{item.title}</p>
                 </a>

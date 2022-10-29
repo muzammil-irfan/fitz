@@ -2,66 +2,66 @@ import React from "react";
 import Heading from "../common/Heading";
 import BlogCard from "../common/BlogCard";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-export default function BlogSection() {
+export default function BlogSection({ data }) {
   const settings = {
     dots: false,
-    infinite: true,
+    Infinity:false,
     speed: 500,
     slidesToShow: 3,
-    initialSlides:0,
+    initialSlides: 0,
     responsive: [
       {
         breakpoint: 1050,
         settings: {
           slidesToShow: 2.5,
-          slidesToScroll: 2,
+          slidesToScroll: 2
           // initialSlide: 2
-        }
+        },
       },
       {
-        breakpoint: 700 ,
+        breakpoint: 700,
         settings: {
-          slidesToShow: 1.5
-        }
+          slidesToShow: 1.5,
+        },
       },
       {
-        breakpoint: 480 ,
+        breakpoint: 480,
         settings: {
-          slidesToShow: 1.05
-        }
-      }
-    ]
+          slidesToShow: 1.05,
+        },
+      },
+    ],
   };
+  
   return (
     <div className="sm:text-center overflow-hidden px-2 ">
       <Heading className={"text-3xl my-5 lg:my-10"}>
         From Our <span className="yellow">Blogs</span>
-      </Heading>
+      </Heading>  
       {/* <div className="my-5"> */}
+        {data && 
       <Slider {...settings}>
-        <BlogCard
-          href="/"
-          imageSrc={"/blog/image-1.png"}
-          category="case study"
-          title="Sed do eiusmod tempor 8% incididunt ut labore et."
-          description="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu reprehenderit fugiat."
-        />
-        <BlogCard
-        href="/"
-          imageSrc={"/blog/image-2.png"}
-          category="video"
-          title="Oed emasn eiusmod tempor incididunt labore et dolor."
-          description="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat،Excepteur sint occaecat cupidatat"
-        />
-        <BlogCard
-        href="/"
-          imageSrc={"/blog/image-3.png"}
-          category="article"
-          title="Dolor masn eiusmod tempor  labore et occaecat."
-          description="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum."
-        />
-      </Slider>
+        {data.length > 0 ? (
+          data.map((item) => {
+            return (
+              <BlogCard
+                key={item.slug}
+                href={`/blog/${item.slug}`}
+                imageSrc={item.media[0]}
+                category={"No Category"}
+                title={item.title}
+                description={"There is not any short description in the data"}
+              />
+            );
+          })
+        ) : (
+          <div>No blogs posted yet</div>
+        )}
+        </Slider>
+      }
       {/* </div> */}
     </div>
   );

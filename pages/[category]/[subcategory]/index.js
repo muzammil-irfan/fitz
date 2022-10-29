@@ -25,16 +25,16 @@ export default function SubCategory({profiles,subCategory}) {
   //     .catch((err) => {
   //       console.log("partner", err);
   //     });
-  //   axios
-  //     .get(`${backendHost}/partner/view`, {
-  //       params: { partner_id: 1, category_id: 132 },
-  //     })
-  //     .then((res) => {
-  //       console.log("partner view", res);
-  //     })
-  //     .catch((err) => {
-  //       console.log("partner view", err);
-  //     });
+    // axios
+    //   .get(`${backendHost}/partner/view`, {
+    //     params: { partner_id: 1, category_id: 132 },
+    //   })
+    //   .then((res) => {
+    //     console.log("partner view", res);
+    //   })
+    //   .catch((err) => {
+    //     console.log("partner view", err);
+    //   });
   //   const f = async () => {
   //     const category = "gyms";
   //     const subcategory = "kickboxing";
@@ -83,6 +83,7 @@ export default function SubCategory({profiles,subCategory}) {
           return (
             <DesktopCategoryCard
               key={item.title}
+              href={`/courts/soccer/${titleToSlugConverter(item.title + " " + item.id)}`}
               title={item.title}
               description={item.description}
               amount={"No amount"}
@@ -98,6 +99,7 @@ export default function SubCategory({profiles,subCategory}) {
           return (
             <MobileCategoryCard
               key={item.title}
+              href={`/courts/soccer/${titleToSlugConverter(item.title + " " + item.id)}`}
               title={item.title}
               description={item.description}
               amount={"No amount"}

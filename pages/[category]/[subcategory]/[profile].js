@@ -2,8 +2,19 @@ import React from 'react'
 import Heading from '../../../components/common/Heading'
 import { BiMap, BiDollarCircle } from "react-icons/bi";
 import { TbWorld,TbMap2 } from "react-icons/tb";
+import backendHost from '../../../utils/backendHost';
+import axios from 'axios';
 
-export default function Lena() {
+export default function Lena({profiles}) {
+  console.log(profiles);
+  if(!profiles){
+    return <div>Loading...</div>
+  };
+  return (
+    <div dangerouslySetInnerHTML={{__html:profiles.attributes_values_en}}>
+
+    </div>
+  )
   return (
     <div>
         <Heading className="py-3">
@@ -45,3 +56,31 @@ const sportsList = [
     "Kickboxing",
     "Gain Muscle"
 ]
+export async function getStaticPaths(){
+  const returnObj = {
+    paths: [{ params: { category: "/courts", subcategory: "/soccer", profile:"/ehab-1" } }],
+    fallback: true,
+  };
+  return returnObj;
+}
+
+export async function getStaticProps(context){
+  const { params } = context;
+  const props = {
+    profiles: [],
+    subCategory:null,
+    revalidate: 10,
+  };
+  try {
+    const profiles = await axios.get(`${backendHost}/partner/view`, {
+      params: { partner_id: 1, category_id: 132 },
+    })
+    props.profiles = profiles.data;
+  } catch(err){
+    console.log(err);
+    return {
+      notFound:true
+    }
+  }
+  return {props};
+}

@@ -18,7 +18,7 @@ import backendHost from "../utils/backendHost";
 import idSlugConverter from "../utils/idSlugConverter";
 import { useEffect } from "react";
 
-export default function Home({categories}) {
+export default function Home({categories,blogs}) {
   
   
   return (
@@ -30,7 +30,7 @@ export default function Home({categories}) {
       </Head>
         <BannerSection />
         <LookingForSection data={categories} />
-        <BlogSection />
+        <BlogSection data={blogs} />
         <BmiCalculatorSection />
         <ThingsSection />
         <FootballPlayerSection />
@@ -44,11 +44,14 @@ export default function Home({categories}) {
 export async function getStaticProps() {
   const props = {
     categories: [],
+    blogs:[]
   };
   try {
     //To obtain slug from category
     const categories = await axios.get(`${backendHost}/category`);
     props.categories = [...categories.data];
+    const blogs = await axios.get(`${backendHost}/blog`);
+    props.blogs = [...blogs.data];
     
     return {props};
   } catch (err) {
