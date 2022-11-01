@@ -1,7 +1,7 @@
 import React from 'react'
-import AdultTable from './AdultTable'
+import AdultTable from './AdultSection/AdultTable'
 import AdultTableContent from './AdultTableContent'
-import ChildrenTable from './ChildrenTable'
+import ChildrenTable from './ChildrenSection/ChildrenTable'
 import ChildrenTableContent from './ChildrenTableContent'
 import OverweightSection from './OverweightSection'
 

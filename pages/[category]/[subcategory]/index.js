@@ -16,6 +16,7 @@ export default function SubCategory({
   categoryName,
 }) {
   const router = useRouter();
+ 
   if (!profiles) {
     return <p>Loading...</p>;
   }
@@ -59,9 +60,7 @@ export default function SubCategory({
                     )}`}
                     title={item.title}
                     description={item.description}
-                    amount={"No amount"}
                     location={item.location}
-                    language={" no language"}
                     socialMedia={JSON.parse(item.social_media)}
                     imageSrc={JSON.parse(item.media)[0]}
                     imageAlt={item.title}
@@ -71,7 +70,7 @@ export default function SubCategory({
             </div>
           </>
         ) : (
-          <div className=" my-10" >There is no profiles available</div>
+          <div className=" my-10">There is no profiles available</div>
         )}
       </div>
     </Layout>
@@ -87,10 +86,10 @@ export async function getStaticPaths() {
     //What we are doing here is fetching categories to get their id and by using that id
     //we are getting all subcategories one by one as we dont have any other api
     //so the pattern we are gathering in possible slugs is /category/subcategory
-    const categoriesEn = await axios.get(`${backendHost}/category`,{
-      headers:{
-        "Accept-Language":"en"
-      }
+    const categoriesEn = await axios.get(`${backendHost}/category`, {
+      headers: {
+        "Accept-Language": "en",
+      },
     });
     const arrOfRequests = categoriesEn.data.map((item) =>
       axios.get(`${backendHost}/category/${item.id}`)
@@ -106,14 +105,14 @@ export async function getStaticPaths() {
                 params: {
                   category: `/${titleToSlugConverter(categoryData.title)}`,
                   subcategory: `/${titleToSlugConverter(item.title)}`,
-                  locale:"en"
+                  locale: "en",
                 },
               });
               possibleSlugs.push({
                 params: {
                   category: `/${titleToSlugConverter(categoryData.title)}`,
                   subcategory: `/${titleToSlugConverter(item.title)}`,
-                  locale:"ar"
+                  locale: "ar",
                 },
               });
             });
@@ -130,7 +129,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const { params,locale } = context;
+  const { params, locale } = context;
   const props = {
     profiles: [],
     categories: [],
@@ -141,11 +140,11 @@ export async function getStaticProps(context) {
   const { category, subcategory } = params;
   try {
     const config = {
-      headers:{
-        "Accept-Language":locale
-      }
-    }
-    const categories = await axios.get(`${backendHost}/category`,config);
+      headers: {
+        "Accept-Language": locale,
+      },
+    };
+    const categories = await axios.get(`${backendHost}/category`, config);
     props.categories = categories.data;
     let categoryId;
     let categoryName;
@@ -157,8 +156,8 @@ export async function getStaticProps(context) {
     });
     let subCategoryId;
     const subCategoriesRequest = await axios.get(
-      `${backendHost}/category/${categoryId}`
-      ,config
+      `${backendHost}/category/${categoryId}`,
+      config
     );
     subCategoriesRequest.data.map((item) => {
       if (titleToSlugConverter(item.title) === subcategory) {
@@ -167,14 +166,14 @@ export async function getStaticProps(context) {
       }
     });
     const partnersData = await axios.get(
-      `${backendHost}/partner/${subCategoryId}` //subCategoryId
-      ,config
+      `${backendHost}/partner/${subCategoryId}`, //subCategoryId
+      config
     );
     props.profiles = partnersData.data;
     props.categoryName = categoryName;
     return { props };
   } catch (err) {
-    console.log(err)
+    console.log(err);
     return {
       notFound: true,
     };

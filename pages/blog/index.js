@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { Context } from "react-intl/src/components/injectIntl";
 import BlogCard from "../../components/common/BlogCard";
 import Layout from "../../components/Layout";
 import backendHost from "../../utils/backendHost";
@@ -13,7 +14,6 @@ export default function Blog({ categories,posts }) {
     <div className="grid md:grid-cols-3 my-5">
       {posts.length > 0 ? (
         posts.map((item) => {
-          console.log(item)
           return (
             <BlogCard
               key={item.id}
@@ -33,16 +33,24 @@ export default function Blog({ categories,posts }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps(context) {
   const props = {
     posts: [],
     categories: [],
     revalidate:10
   };
   try{
-    const blogs = await axios.get(`${backendHost}/blog`);
+    const blogs = await axios.get(`${backendHost}/blog`,{
+      headers:{
+        "Accept-Language":context.locale
+      }
+    });
     props.posts = blogs.data;
-    const categories = await axios.get(`${backendHost}/category`);
+    const categories = await axios.get(`${backendHost}/category`,{
+      headers:{
+        "Accept-Language":context.locale
+      }
+    });
     props.categories = categories.data;
     return {props};
   } catch(err){

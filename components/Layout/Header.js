@@ -65,7 +65,7 @@ export default function Header({ categories }) {
         <h3 className="font-bold">What are you looking for?</h3>
         {categories.map((item) => {
           return (
-            <Link href={titleToSlugConverter(item.title)} key={item.id}>
+            <Link href={"/"+titleToSlugConverter(item.title)} key={item.id}>
               <a>
                 <p
                   className="my-3"

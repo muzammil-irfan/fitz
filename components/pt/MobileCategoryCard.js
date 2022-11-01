@@ -23,7 +23,7 @@ export default function MobileCategoryCard({
         <div className="flex ">
           <div className="w-1/3  relative aspect-square">
             <Image
-              src={"/pt/fitness" + imageSrc}
+              src={imageSrc}
               alt={imageAlt}
               layout="fill"
             />
@@ -41,14 +41,6 @@ export default function MobileCategoryCard({
           <div className="py-2 flex gap-2 items-center">
             <BiMap />
             <p>{location}</p>
-          </div>
-          <div className="py-2 flex gap-2 items-center">
-            <BiDollarCircle />
-            <p>{amount} JOD/hr</p>
-          </div>
-          <div className="py-2 flex gap-2 items-center">
-            <TbWorld />
-            <p>{language}</p>
           </div>
         </div>
         </a>
