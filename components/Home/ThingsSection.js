@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import Heading from '../common/Heading'
 import Text from '../common/Text'
+import { FormattedMessage } from 'react-intl'
 
 export default function ThingsSection() {
   return (
@@ -11,10 +12,11 @@ export default function ThingsSection() {
         </div>
         <div className='flex flex-col gap-5 w-1/2 md:w-1/3 justify-center'>
             <Heading className={"text-md "}>
-            Lorem <span className='yellow'>ipsumsim</span> dolor amet
+            {/* Lorem <span className='yellow'>ipsumsim</span> dolor amet */}
+            <FormattedMessage id="page.home.thingsSection1.title"  />
             </Heading>
             <Text className='text-slate-500 '>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.consectetur elit.
+            <FormattedMessage id="page.home.thingsSection1.description"  />
             </Text>
         </div>
     </div>

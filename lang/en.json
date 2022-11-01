@@ -1,0 +1,21 @@
+{
+    "page.home.bmi.title":"Body Mass Index (BMI) Calculator",
+    "page.home.bmi.description":"The value obtained from the calculation of BMI is used to categorize whether a person is underweight, normal weight, overweight, or obese depending on what range the value falls between.",
+    "page.home.bmi.button":"BMI Calculator",
+    "page.home.thingsSection1.title":"Lorem ipsumsim dolor amet",
+    "page.home.thingsSection1.description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",
+    "page.home.footballSection.title":"Lorem ipsumsim dolor amet",
+    "page.home.footballSection.description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",
+    "page.home.footballSection.button":"See more",
+    "page.home.thingsSection2.title":"Lorem ipsumsim dolor amet",
+    "page.home.thingsSection2.description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",
+    "page.home.thingsSection2.button":"See more",
+    "page.home.thingsSection3.title":"Lorem ipsumsim dolor amet",
+    "page.home.thingsSection3.description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",
+    "page.home.thingsSection3.button":"See more",
+    "page.home.downloadAppSection.title":"Lorem ipsumsim dolor amet",
+    "page.home.downloadAppSection.description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",
+    "page.home.seemore.button":"See more",
+    "page.home.blogSection.title":"From Our Blogs",
+    "page.home.lookingFor.title":"What Are You Looking For?"
+}

@@ -1,15 +1,16 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import Heading from "../common/Heading";
 import Slider from "react-slick";
 import backendHost from "../../utils/backendHost";
 import axios from "axios";
-import { CategoriesContext } from "../context/categories";
+// import { CategoriesContext } from "../context/categories";
 import Image from "next/image";
 import Link from 'next/link';
 import titleToSlugConverter from "../../utils/titleToSlugConverter";
+import { FormattedMessage } from 'react-intl'
 
 export default function LookingForSection({data}) {
-  const { categories,getCategories } = useContext(CategoriesContext);
+  // const { categories,getCategories } = useContext(CategoriesContext);
 
   const settings = {
     dots: false,
@@ -53,8 +54,9 @@ export default function LookingForSection({data}) {
   return (
     <div className="p-2 mb-5 overflow-hidden">
       <Heading className={"text-3xl md:text-center my-4 lg:mb-8"}>
-        What are you{" "}
-        <span className="yellow block md:inline">looking for?</span>
+        {/* What are you{" "}
+        <span className="yellow block md:inline">looking for?</span> */}
+        <FormattedMessage id="page.home.lookingFor.title" />
       </Heading>
       <div className="py-5 lg:px-5">
         <Slider {...settings}>

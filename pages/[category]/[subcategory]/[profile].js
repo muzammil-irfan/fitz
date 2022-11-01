@@ -11,11 +11,6 @@ export default function Lena({profiles}) {
     return <div>Loading...</div>
   };
   return (
-    <div dangerouslySetInnerHTML={{__html:profiles.attributes_values_en}}>
-
-    </div>
-  )
-  return (
     <div>
         <Heading className="py-3">
             More Details

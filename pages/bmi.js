@@ -1,22 +1,26 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Heading from "../components/common/Heading";
 import BMIForm from "../components/bmi/Form";
 import DesktopSection from "../components/bmi/DesktopSection";
 import MobileSection from "../components/bmi/MobileSection";
 import UnderweightSection from "../components/bmi/UnderweightSection";
 import Content from "../components/bmi/Content";
+import Layout from "../components/Layout";
 
-export default function BMIPage() {
+export default function BMIPage({ categories }) {
   return (
-    <div className="py-5">
-      <Heading>
-        Body Mass Index <span className="yellow">(BMI)</span> Calculator
-      </Heading>
-      <p className="my-5">Please fill this information to calculate your BMI</p>
-      <BMIForm />
-      <Content
-        title="BMI introduction"
-        description={`BMI is a measurement of a person&apos;s leanness or corpulence based
+    <Layout categories={categories}>
+      <div className="py-5">
+        <Heading>
+          Body Mass Index <span className="yellow">(BMI)</span> Calculator
+        </Heading>
+        <p className="my-5">
+          Please fill this information to calculate your BMI
+        </p>
+        <BMIForm />
+        <Content
+          title="BMI introduction"
+          description={`BMI is a measurement of a person&apos;s leanness or corpulence based
         on their height and weight, and is intended to quantify tissue mass.
         It is widely used as a general indicator of whether a person has a
         healthy body weight for their height. Specifically, the value obtained
@@ -30,10 +34,29 @@ export default function BMIPage() {
         useful indicator of whether any additional testing or action is
         required. Refer to the table below to see the different categories
         based on BMI that are used by the calculator.`}
-      />
-      <DesktopSection /> 
-      <MobileSection />
-      <UnderweightSection />
-    </div>
+        />
+        {/* <Suspense> */}
+          <DesktopSection />
+          <MobileSection />
+        {/* </Suspense> */}
+        <UnderweightSection />
+      </div>
+    </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const props = {
+    categories: [],
+  };
+  try {
+    //To obtain slug from category
+    const categories = await axios.get(`${backendHost}/category`);
+    props.categories = [...categories.data];
+
+    return { props };
+  } catch (err) {
+    console.log(err);
+    return { props };
+  }
 }

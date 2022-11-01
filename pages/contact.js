@@ -9,9 +9,10 @@ import axios from "axios";
 import backendHost from "../utils/backendHost";
 import {toast} from 'react-toastify';
 import CommonToast from "../components/common/CommonToast";
+import Layout from '../components/Layout';
 
 
-export default function ContactPage() {
+export default function ContactPage({categories}) {
   const initialValues = {
     name: "",
     email: "",
@@ -51,6 +52,7 @@ export default function ContactPage() {
     }
   };
   return (
+    <Layout categories={categories}>
     <div className="pl-2 md:pl-0 py-3">
       <CommonToast />
       
@@ -123,6 +125,22 @@ export default function ContactPage() {
         </div>
       </div>
     </div>
+    </Layout>
   );
 }
 
+export async function getStaticProps() {
+  const props = {
+    categories: []
+  };
+  try {
+    //To obtain slug from category
+    const categories = await axios.get(`${backendHost}/category`);
+    props.categories = [...categories.data];
+    
+    return {props};
+  } catch (err) {
+    console.log(err);
+    return {props};
+  }
+}

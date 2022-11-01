@@ -5,16 +5,18 @@ import Heading from '../common/Heading'
 import {BsArrowRightShort} from 'react-icons/bs';
 import Text from '../common/Text';
 import SeeMoreButton from '../common/SeeMoreButton';
+import { FormattedMessage } from 'react-intl'
 
 export default function ThingsSection3() {
   return (
     <div className='flex justify-evenly  px-5 py-10'>
         <div className='flex flex-col gap-5 w-1/3 justify-center'>
             <Heading >
-            Lorem <span className='yellow'>ipsumsim</span> dolor amet
+            {/* Lorem <span className='yellow'>ipsumsim</span> dolor amet */}
+            <FormattedMessage id="page.home.thingsSection3.title"  />
             </Heading>
             <Text className='text-slate-500'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.consectetur elit.
+            <FormattedMessage id="page.home.thingsSection3.description"  />
             </Text>
             <div>
             <SeeMoreButton />

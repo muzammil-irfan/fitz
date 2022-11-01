@@ -1,11 +1,15 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import BlogCard from "../../components/common/BlogCard";
+import Layout from "../../components/Layout";
 import backendHost from "../../utils/backendHost";
 
-export default function Blog({ posts }) {
-  
+export default function Blog({ categories,posts }) {
+  if(!posts || !categories){
+    return <div>Loading...</div>
+  }
   return (
+    <Layout categories={categories}>
     <div className="grid md:grid-cols-3 my-5">
       {posts.length > 0 ? (
         posts.map((item) => {
@@ -25,28 +29,24 @@ export default function Blog({ posts }) {
         <p>There is not any blogs available</p>
       )}
     </div>
+    </Layout>
   );
 }
 
 export async function getStaticProps() {
   const props = {
     posts: [],
+    categories: [],
     revalidate:10
   };
-  return axios
-    .get(`${backendHost}/blog`)
-    .then((res) => {
-      props.posts = [...res.data];
-      return {
-        // Passed to the page component as props
-        props,
-      };
-    })
-    .catch((err) => {
-      console.log(err.response.data);
-      return {
-        // Passed to the page component as props
-        props,
-      };
-    });
+  try{
+    const blogs = await axios.get(`${backendHost}/blog`);
+    props.posts = blogs.data;
+    const categories = await axios.get(`${backendHost}/category`);
+    props.categories = categories.data;
+    return {props};
+  } catch(err){
+    console.log(err);
+    return {props};
+  }
 }

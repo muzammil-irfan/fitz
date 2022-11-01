@@ -7,15 +7,18 @@ import axios from "axios";
 import backendHost from "../../utils/backendHost";
 import titleToSlugConverter from "../../utils/titleToSlugConverter";
 import { useRouter } from "next/router";
+import Layout from "../../components/Layout";
 
-export default function Category({ data }) {
+
+export default function Category({ categories,data }) {
   const router = useRouter();
-
+  
   if (!data) {
     return <div>Loading...</div>;
   }
 
   return (
+    <Layout categories={categories}>
     <div className="p-2">
       {/* Home / PTs */}
       <p className="yellow py-1">{data.length} CATEGORIES</p>
@@ -46,6 +49,7 @@ export default function Category({ data }) {
         })}
       </div>
     </div>
+    </Layout>
   );
 }
 
@@ -55,11 +59,25 @@ export async function getStaticPaths() {
     fallback: true,
   };
   try {
-    const categories = await axios.get(`${backendHost}/category`);
-    const slug = categories.data.map((item) => ({
+    const categoriesEn = await axios.get(`${backendHost}/category`,{
+      headers:{
+        "Accept-Language":"en"
+      }
+    });
+    const slugEn = categoriesEn.data.map((item) => ({
       params: { category: titleToSlugConverter(item.title) },
+      locale:"en"
     }));
-    returnObj.paths = slug;
+    const categoriesAr = await axios.get(`${backendHost}/category`,{
+      headers:{
+        "Accept-Language":"ar"
+      }
+    });
+    const slugAr = categoriesAr.data.map((item) => ({
+      params: { category: titleToSlugConverter(item.title) },
+      locale:"ar"
+    }));
+    returnObj.paths = [...slugEn,...slugAr];
     return returnObj;
   } catch (err) {
     console.log("err", err);
@@ -70,15 +88,25 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const { category } = context.params;
   const props = {
+    categories: [],
     data: [],
   };
   try {
     //To obtain slug from category
-    const categories = await axios.get(`${backendHost}/category`);
+    const categories = await axios.get(`${backendHost}/category`,{
+      headers:{
+        "Accept-Language":context.locale
+      }
+    });
+    props.categories = categories.data;
     let slug = categories.data.filter(
       (item) => titleToSlugConverter(item.title) === category 
     );
-    const categoryPageData = await axios.get(`${backendHost}/category/${slug[0].id}`);
+    const categoryPageData = await axios.get(`${backendHost}/category/${slug[0].id}`,{
+      headers:{
+        "Accept-Language":context.locale
+      }
+    });
     props.data = categoryPageData.data;
     return {props};
   } catch (err) {
