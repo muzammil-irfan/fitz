@@ -5,12 +5,12 @@ import BlogCard from "../../components/common/BlogCard";
 import Layout from "../../components/Layout";
 import backendHost from "../../utils/backendHost";
 
-export default function Blog({ categories,posts }) {
+export default function Blog({ dir,categories,posts }) {
   if(!posts || !categories){
     return <div>Loading...</div>
   }
   return (
-    <Layout categories={categories}>
+    <Layout dir={dir} categories={categories}>
     <div className="grid md:grid-cols-3 my-5">
       {posts.length > 0 ? (
         posts.map((item) => {

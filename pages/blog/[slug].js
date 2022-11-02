@@ -7,12 +7,12 @@ import BlogSection from "../../components/Home/BlogSection";
 import Layout from "../../components/Layout";
 import backendHost from "../../utils/backendHost";
 
-export default function Blog({ categories, post }) {
+export default function Blog({ dir,categories, post }) {
   if (!post) {
     return <div>Loading...</div>;
   }
   return (
-    <Layout categories={categories}>
+    <Layout dir={dir} categories={categories}>
       <div>
         <div className="flex flex-col sm:flex-row-reverse sm:justify-around px-3">
           <div className="aspect-square m-2 relative sm:w-1/2 sm:m-5 max-w-[450px] ">

@@ -12,7 +12,7 @@ import titleToSlugConverter from "../../../utils/titleToSlugConverter";
 import CustomImage from "../../../components/common/CustomImage";
 import Slider from "react-slick";
 
-export default function Lena({ categories, profiles }) {
+export default function Lena({ dir,categories, profiles }) {
   // React.useEffect(() => {
   //   (async () => {
   //     const categoriesEn = await axios.get(`${backendHost}/category`, {
@@ -71,11 +71,10 @@ export default function Lena({ categories, profiles }) {
   if (!profiles) {
     return <div>Loading...</div>;
   }
-  console.log(profiles);
   const media = JSON.parse(profiles.media);
   const social_media = JSON.parse(profiles.social_media);
   return (
-    <Layout categories={categories}>
+    <Layout dir={dir} categories={categories}>
       <div className="flex m-4 " style={{ cursor: "pointer" }}>
         <div className="w-1/3 xl:w-1/4  relative aspect-square">
           <Image

@@ -11,7 +11,7 @@ import Layout from "../../components/Layout";
 import CustomImage from "../../components/common/CustomImage";
 
 
-export default function Category({ categories,data }) {
+export default function Category({ dir,categories,data }) {
   const router = useRouter();
   
   if (!data) {
@@ -19,7 +19,7 @@ export default function Category({ categories,data }) {
   }
 
   return (
-    <Layout categories={categories}>
+    <Layout categories={categories} dir={dir}>
     <div className="p-2">
       {/* Home / PTs */}
       <p className="yellow py-1">{data.length} CATEGORIES</p>

@@ -14,6 +14,7 @@ export default function SubCategory({
   profiles,
   subCategory,
   categoryName,
+  dir
 }) {
   const router = useRouter();
  
@@ -21,7 +22,7 @@ export default function SubCategory({
     return <p>Loading...</p>;
   }
   return (
-    <Layout categories={categories}>
+    <Layout dir={dir} categories={categories}>
       <div className="p-2">
         {/* Home / PTs */}
         <p className="yellow py-1">
