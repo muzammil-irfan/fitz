@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fitz Email Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    body {
+      font-family: "Montserrat", sans-serif;
+    }
+    .container {
+      padding: 10px;
+    }
+    #hello-section {
+      padding: 20px 0px;
+      text-align: center;
+      gap: 10px;
+    }
+    .font-bold {
+      font-weight: bold;
+    }
+    #calculation-section {
+      padding: 20px;
+      background-color: #f8f8f8;
+      margin: 10px 0px;
+    }
+    .my-10 {
+      margin: 10px 0px;
+    }
+    span {
+      color: #fbac18;
+    }
+    #bmi-section {
+      margin: 20px 0px;
+      text-align: center;
+    }
+    #bmi-section h2 {
+      padding: 0px 4rem;
+      font-size: 32px;
+      margin: 0px;
+    }
+    #bmi-section p {
+      line-height: 1.7;
+    }
+    #calculate {
+      background-color: #fbac18;
+      color: white;
+      padding: 16px;
+      border: 0;
+      font-weight: 500;
+    }
+    #last-section {
+      margin: 5rem 0;
+      text-align: center;
+    }
+    #button-images {
+      gap: 18px;
+      display: flex;
+      justify-content: center;
+      padding: 1rem 0;
+      border-top: 1px solid #e7e8e8;
+    }
+    .relative {
+      position: relative;
+    }
+    .right-pos {
+      position: absolute;
+      right: 0;
+      margin: 0;
+      transform: translate(10%, 45%);
+      color: white;
+      font-weight: 700;
+      -webkit-text-stroke: 0.5px black;
+      letter-spacing: 1.5px;
+      font-size: 12px;
+    }
+    .right-pos-container {
+      height: 30px;
+      width: 24.32%;
+      position: relative;
+    }
+    .red {
+      background-color: #eb5757;
+    }
+    .pink {
+      background-color: #ed8888;
+    }
+    .yellow {
+      background-color: #f2c94c;
+    }
+    .green {
+      background-color: #219653;
+    }
+    .brown {
+      background-color: #ae4242;
+    }
+    .orange {
+      background-color: #f2994a;
+    }
+    .arrow {
+      padding: 1px;
+    }
+    .bar-name {
+      margin: 1px;
+    }
+    @media(max-width:500px){
+        body{
+            font-size: 10px;
+        }
+        #bmi-section h2{
+            font-size: 20px;
+        }
+    }
+    
+  </style>
+  <body>
+    <div class="container">
+      <div class="logo-div">
+        <img src="https://fitz-cornerz.netlify.app/email/logo.png" alt="Fitz Cornerz logo" />
+      </div>
+      <div id="hello-section">
+        <h2 class="font-bold">Hello There</h2>
+        <p>Welcome to Fit Cornerz, this is the resulte for yor BMI test</p>
+      </div>
+      <div id="calculation-section">
+        <!-- Mobile and desktop adult bar -->
+        <div style="padding: 20px 0;" >
+          <div
+            style="
+              text-align: center;
+              display: flex;
+              font-size: 10px;
+              font-weight: bold;
+
+            "
+          >
+            <p style="width: 41.92%" class="bar-name">Underweight</p>
+            <p style="width: 14.75%" class="bar-name">Normal</p>
+            <p style="width: 11.35%" class="bar-name">Overweight</p>
+            <p style="width: 31.91%" class="bar-name">Obesity</p>
+          </div>
+          <div
+            style="
+              text-align: center;
+              display: flex;
+              font-size: 10px;
+              font-weight: bold;
+            "
+          >
+            <img src="https://fitz-cornerz.netlify.app/email/arrow.png" width="41.92%" height="5px" class="arrow" />
+            <img src="https://fitz-cornerz.netlify.app/email/arrow.png" width="14.75%" height="5px" class="arrow" />
+            <img src="https://fitz-cornerz.netlify.app/email/arrow.png" width="11.35%" height="5px" class="arrow" />
+            <img src="https://fitz-cornerz.netlify.app/email/arrow.png" width="31.91%" height="5px" class="arrow" />
+          </div>
+
+          <div style="width: 100%; display: flex">
+            <div class="right-pos-container red" style="width: 27.32%">
+              <p class="right-pos">16</p>
+            </div>
+            <div style="width: 6.2%" class="right-pos-container pink">
+              <p class="right-pos">17</p>
+            </div>
+            <div style="width: 8.4%" class="right-pos-container yellow">
+              <p class="right-pos">18.5</p>
+            </div>
+            <div style="width: 14.75%" class="right-pos-container green">
+              <p class="right-pos">25</p>
+            </div>
+            <div style="width: 11.35%" class="right-pos-container yellow">
+              <p class="right-pos">30</p>
+            </div>
+            <div style="width: 11.35%" class="right-pos-container pink">
+              <p class="right-pos">35</p>
+            </div>
+            <div style="width: 11.35%" class="right-pos-container red">
+              <p class="right-pos">40</p>
+            </div>
+            <div style="width: 9.21%" class="right-pos-container brown"></div>
+          </div>
+          <div style="padding: 10px 0; position: relative">
+            <img src="https://fitz-cornerz.netlify.app/email/marker.png" alt="marker" style="position: absolute; left: 50%" />
+            <!-- Change the above left value for moving this in percentage -->
+          </div>
+        </div>
+        <!-- Mobile and desktop children bar -->
+         <div style="display: none;">
+            <!-- Remove above style for using this -->
+          <div style="width: 100%; display: flex">
+            <div class="right-pos-container orange" style="width: 5%">
+              <p class="right-pos">5%</p>
+            </div>
+            <div style="width: 80%" class="right-pos-container green">
+              <p class="right-pos">85%</p>
+            </div>
+            <div style="width: 10%" class="right-pos-container yellow">
+              <p class="right-pos">95%</p>
+            </div>
+            <div style="width: 5%" class="right-pos-container red"></div>
+          </div>
+          <div style="padding: 10px 0; position: relative">
+            <img src="https://fitz-cornerz.netlify.app/email/marker.png" alt="marker" style="position: absolute; left: 50%" />
+            <!-- Change the above left value for moving this in percentage -->
+          </div>
+        </div> 
+        <div>
+          <h3>BMI = 24.2 kg/m<sup>2</sup></h3>
+          <ul style="padding: 0px 18px">
+            <li class="my-10">Healthy BMI range: 18.5 kg/m2 - 25 kg/m2</li>
+            <li class="my-10">
+              Healthy weight for the height: 53.5 kgs - 72.3 kgs
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="bmi-section">
+        <h2>Body Mass Index <span>(BMI)</span> Calculator.</h2>
+        <p>
+          BMI is a measurement of a person's leanness or corpulence based on
+          their height and weight, and is intended to quantify tissue mass. It
+          is widely used as a general indicator of whether a person has a
+          healthy body weight for their height.
+        </p>
+        <button id="calculate">Calculate again</button>
+      </div>
+      <div id="last-section">
+        <img
+          src="https://fitz-cornerz.netlify.app/email/bmi-calculator.png"
+          alt="calculator"
+          class="my-10"
+          width="100%"
+        />
+
+        <div id="button-images">
+          <img
+            src="https://fitz-cornerz.netlify.app/email/app-store-black-button.png"
+            alt="appstore button"
+          />
+          <img
+            src="https://fitz-cornerz.netlify.app/email/playstore-black-button.png"
+            alt="playstore button"
+          />
+        </div>
+        <p>© 2022 Fit Cornerz. Made with &lt; 3 in Jordan</p>
+      </div>
+    </div>
+  </body>
+</html>
