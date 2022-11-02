@@ -12,7 +12,7 @@ function CustomImage({alt, ...props}) {
         alt={alt} // To fix lint warning 
         onError={() => setSrc('/error-image.png')}
         placeholder="blur"
-        blurDataURL="/error-image.png"
+        blurdataurl="/error-image.png"
         className="max-w-100"
       />
     );
