@@ -5,10 +5,12 @@ import { TbMenu } from "react-icons/tb";
 import { MdOutlineClose } from "react-icons/md";
 // import { CategoriesContext } from "../context/categories";
 import titleToSlugConverter from "../../utils/titleToSlugConverter";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export default function Header({ categories }) {
   const router = useRouter();
   const [sidebar, setSidebar] = useState(false);
+  const intl = useIntl();
   return (
     <div className="py-5 shadow-sm">
       <div className="flex md:hidden justify-between px-5 items-center container mx-auto">
@@ -32,7 +34,9 @@ export default function Header({ categories }) {
             }}
           />
         </div>
-        <h3 className="font-bold">More</h3>
+        <h3 className="font-bold">
+          <FormattedMessage id="page.header.more" />
+        </h3>
         <div className="flex items-center my-4 font-medium">
           <Link href={router.asPath} locale="en">
             <a>
@@ -56,13 +60,16 @@ export default function Header({ categories }) {
                     setSidebar(false);
                   }}
                 >
-                  {item.name}
+                  {intl.formatMessage({id:`page.header.${item.name}`})}
+          
                 </p>
               </a>
             </Link>
           );
         })}
-        <h3 className="font-bold">What are you looking for?</h3>
+        <h3 className="font-bold">
+          <FormattedMessage id="page.header.lookingFor" />
+        </h3>
         {categories.map((item) => {
           return (
             <Link href={"/"+titleToSlugConverter(item.title)} key={item.id}>
@@ -85,7 +92,7 @@ export default function Header({ categories }) {
         <img src="/logo.png" className="" />
         <div className="flex items-center gap-4 ">
           {headerLinks.map((item) => {
-            return <HeaderLink key={item.name} data={item} />;
+            return <HeaderLink key={item.name} href={item.href} name={intl.formatMessage({id:`page.header.${item.name}`})} />;
           })}
         </div>
         <div className="flex items-center justify-center">
@@ -106,13 +113,13 @@ export default function Header({ categories }) {
   );
 }
 
-const HeaderLink = ({ data }) => {
+const HeaderLink = ({ name,href }) => {
   const router = useRouter();
   const pN = router.asPath;
   return (
-    <Link href={data.href}>
+    <Link href={href}>
       <a>
-        <p className={`${pN === data.href && "font-bold"}`}>{data.name}</p>
+        <p className={`${pN === href && "font-bold"}`}>{name}</p>
       </a>
     </Link>
   );
@@ -120,37 +127,37 @@ const HeaderLink = ({ data }) => {
 
 const headerLinks = [
   {
-    name: "Home",
+    name: "home",
     href: "/",
   },
   {
-    name: "Blogs",
+    name: "blog",
     href: "/blog",
   },
   {
-    name: "BMI",
+    name: "bmi",
     href: "/bmi",
   },
   {
-    name: "Contact us",
+    name: "contact",
     href: "/contact",
   },
 ];
 const sidebarLinks1 = [
   {
-    name: "Download the app",
+    name: "downloadApp",
     href: "/",
   },
   {
-    name: "Blogs",
+    name: "blog",
     href: "/blog",
   },
   {
-    name: "Terms & Conditions",
+    name: "terms",
     href: "/termsandconditions",
   },
   {
-    name: "Contact Us",
+    name: "contact",
     href: "/contact",
   },
 ];

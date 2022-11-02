@@ -5,6 +5,7 @@ import InputBox from "../common/InputBox";
 import axios from 'axios';
 import CommonToast from "../common/CommonToast";
 import {toast} from 'react-toastify';
+import { FormattedMessage, useIntl } from "react-intl";
 
 export default function BMIForm() {
   const initialValues = {
@@ -14,6 +15,7 @@ export default function BMIForm() {
     weight: "",
     email: "",
   };
+  const intl = useIntl();
   const [values, setValues] = useState(initialValues);
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,7 +51,7 @@ export default function BMIForm() {
   return (
     <div className="grid md:grid-cols-2 md:w-2/3 gap-3 my-3">
       <InputBox
-        label={"Age"}
+        label={intl.formatMessage({id:"page.bmi.form.age"})}
         type="number"
         placeholder="2 - 100 years"
         name="age"
@@ -58,16 +60,22 @@ export default function BMIForm() {
       />
       <div>
       <CommonToast />
-        <p className="font-semibold">Gender</p>
+        <p className="font-semibold">
+          <FormattedMessage id="page.bmi.form.gender" />
+        </p>
         <div className="flex items-center gap-2 my-1">
             <input type="radio" id="male" value="m" name="gender"  className="" checked={values.gender == "m"} onChange={handleChange} />
-            <label htmlFor="male">Male</label>
+            <label htmlFor="male">
+            <FormattedMessage id="page.bmi.form.male" />
+            </label>
             <input type="radio" id="female" value="f" name="gender"  className="ml-2" checked={values.gender == "f"} onChange={handleChange} />
-            <label htmlFor="female">Female</label>
+            <label htmlFor="female">
+            <FormattedMessage id="page.bmi.form.female" />
+            </label>
         </div>
       </div>
       <InputBox
-        label={"Height"}
+        label={intl.formatMessage({id:"page.bmi.form.height"})}
         type="number"
         placeholder="cm"
         name="height"
@@ -75,7 +83,7 @@ export default function BMIForm() {
         onChange={handleChange}
       />
       <InputBox
-        label={"Weight"}
+        label={intl.formatMessage({id:"page.bmi.form.weight"})}
         placeholder="kg"
         type="number"
         name="weight"
@@ -83,7 +91,7 @@ export default function BMIForm() {
         onChange={handleChange}
       />
       <InputBox
-        label={"Email"}
+        label={intl.formatMessage({id:"page.bmi.form.email"})}
         placeholder="john@gmail.com"
         name="email"
         type="email"
@@ -92,10 +100,14 @@ export default function BMIForm() {
       />
       <div className="md:flex justify-end items-center md:gap-3 " >
         <div className="">
-          <button className="px-6 py-2 yellow yellow-border w-full sm:w-" onClick={()=>{setValues(initialValues)}}>Clear</button>
+          <button className="px-6 py-2 yellow yellow-border w-full sm:w-" onClick={()=>{setValues(initialValues)}}>
+            <FormattedMessage id="page.bmi.form.clear" />
+          </button>
         </div>
         <div className="my-2 md:my-0">
-          <button className="yellow-background px-4 py-2 w-full sm:w- " onClick={handleSubmit}>Calculate</button>
+          <button className="yellow-background px-4 py-2 w-full sm:w- " onClick={handleSubmit}>
+            <FormattedMessage id="page.bmi.form.calculate" />
+          </button>
         </div>
       </div>
     </div>

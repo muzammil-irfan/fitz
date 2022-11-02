@@ -8,6 +8,7 @@ import backendHost from "../../utils/backendHost";
 import titleToSlugConverter from "../../utils/titleToSlugConverter";
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
+import CustomImage from "../../components/common/CustomImage";
 
 
 export default function Category({ categories,data }) {
@@ -32,7 +33,7 @@ export default function Category({ categories,data }) {
                 <div className="shadow-md">
                   <div className="aspect-square relative">
                     {item.img && (
-                      <Image
+                      <CustomImage
                         src={`https://${item.img}`}
                         alt={item.title}
                         layout="fill"

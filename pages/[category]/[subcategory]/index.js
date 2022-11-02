@@ -31,7 +31,6 @@ export default function SubCategory({
         <Text className={"py-2"}>{subCategory.description}</Text>
         {profiles.length > 0 ? (
           <>
-            <p className="yellow py-1">FILTER (1)</p>
             <div>
               {profiles.map((item) => {
                 return (
