@@ -23,7 +23,7 @@ export default function Footer({categories}) {
               <BsInstagram size="24px" />
             </div>
           </div>
-          <div className="w-full grid grid-cols-3">
+          <div className="w-full grid sm:grid-cols-2 lg:grid-cols-3">
             <LinkDisplayer name={intl.formatMessage({id:`page.header.${linksData[0].name}`})} href={linksData[0].href} />
             {categories.map(item=>{
               return <LinkDisplayer name={item.title} href={"/"+titleToSlugConverter(item.title)} key={item.id} />
@@ -53,7 +53,7 @@ const LinkDisplayer = ({ name,href }) => {
   return (
     <Link href={href}>
       <a>
-        <p className="break-all">{name}</p>
+        <p className="break-all text-xs my-2">{name}</p>
       </a>
     </Link>
   );

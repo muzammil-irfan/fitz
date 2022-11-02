@@ -75,7 +75,7 @@ export default function Header({ categories }) {
             <Link href={"/"+titleToSlugConverter(item.title)} key={item.id}>
               <a>
                 <p
-                  className="my-3"
+                  className="my-3 break-all"
                   onClick={() => {
                     setSidebar(false);
                   }}
