@@ -11,8 +11,9 @@ import Image from "next/image";
 import titleToSlugConverter from "../../../utils/titleToSlugConverter";
 import CustomImage from "../../../components/common/CustomImage";
 import Slider from "react-slick";
+import BreadCrumbs from "../../../components/common/BreadCrumbs";
 
-export default function Lena({ dir,categories, profiles }) {
+export default function Lena({ dir, categories, profiles,categoryTitle,subCategoryTitle }) {
   // React.useEffect(() => {
   //   (async () => {
   //     const categoriesEn = await axios.get(`${backendHost}/category`, {
@@ -74,21 +75,25 @@ export default function Lena({ dir,categories, profiles }) {
   const media = JSON.parse(profiles.media);
   const social_media = JSON.parse(profiles.social_media);
   return (
-    <Layout dir={dir} categories={categories}>
-      <div className="flex m-4 " style={{ cursor: "pointer" }}>
-        <div className="w-1/3 xl:w-1/4  relative aspect-square">
+    <Layout dir={dir} categories={categories} className="container mx-auto pb-8">
+      <div className="p-5">
+      <BreadCrumbs data={[{title:"Home",href:"/"},{title:categoryTitle,href:`/${titleToSlugConverter(categoryTitle)}`},{title:subCategoryTitle,href:`/${titleToSlugConverter(categoryTitle)}/${titleToSlugConverter(subCategoryTitle)}`},{title:profiles.title,href:`/${titleToSlugConverter(
+                      profiles.title + " " + profiles.id
+                    )}`}]} />
+      <div className="flex  my-4 md:my-10" style={{ cursor: "pointer" }}>
+        <div className="w-1/2 sm:w-1/3   relative aspect-square">
           <Image
             src={media.length > 0 && media[0]}
             alt={profiles.title}
             layout="fill"
           />
         </div>
-        <div className="px-5  w-full">
+        <div className="pl-5 md:pl-8 pr-3 py-1  w-full">
           <div className="sm:flex  justify-between ">
-            <h2 className="text-3xl sm:text-4xl  lg:text-5xl font-black ">
+            <h2 className="text-xl sm:text-4xl  lg:text-5xl font-semibold ">
               {profiles.title}
             </h2>
-            <div className="flex my-5 sm:my-3 gap-3 yellow">
+            <div className="flex my-5 text-xl sm:my-3 gap-3 yellow">
               <a href={social_media["facebook"]}>
                 <BsFacebook />
               </a>
@@ -106,14 +111,14 @@ export default function Lena({ dir,categories, profiles }) {
           </div>
         </div>
       </div>
-      <div className="block sm:hidden m-4">
+      <div className="block sm:hidden my-4">
         <CotentBox
           description={profiles.description}
           email={profiles.email}
           contact={profiles.phone_number}
         />
       </div>
-      <div className="m-4">
+      <div className="my-4">
         {media && media.length > 3 ? (
           <Slider {...settings}>
             {media.map((item) => {
@@ -128,8 +133,8 @@ export default function Lena({ dir,categories, profiles }) {
           </div>
         )}
       </div>
-      <div className="m-4">
-        <Heading className="py-3">More Details</Heading>
+      <div className="my-4">
+        <Heading className="text-3xl font-black py-3">More Details</Heading>
         <div className="py-2 flex gap-2 items-center">
           <BiMap />
           <p>{profiles.location}</p>
@@ -138,6 +143,7 @@ export default function Lena({ dir,categories, profiles }) {
           dangerouslySetInnerHTML={{ __html: profiles.attributes_values_en }}
           className="my-5"
         />
+      </div>
       </div>
     </Layout>
   );
@@ -152,7 +158,7 @@ const sportsList = [
 const CotentBox = ({ description, email, contact }) => {
   return (
     <div className="">
-      <p>{description}</p>
+      <p className="my-3">{description}</p>
       <div className="sm:flex sm:gap-5 md:my-5">
         <div className="my-2 flex gap-2 items-center">
           <MdMailOutline />
@@ -188,7 +194,8 @@ export async function getStaticProps(context) {
   const props = {
     profiles: [],
     categories: [],
-    subCategory: null,
+    subCategoryTitle: null,
+    categoryTitle:null,
     revalidate: 10,
   };
   try {
@@ -204,6 +211,7 @@ export async function getStaticProps(context) {
     categories.data.map((item) => {
       if (params.category === titleToSlugConverter(item.title)) {
         categoryId = item.id;
+        props.categoryTitle = item.title;
       }
     });
     let subCategoryId;
@@ -214,6 +222,7 @@ export async function getStaticProps(context) {
     subCategory.data.map((item) => {
       if (params.subcategory === titleToSlugConverter(item.title)) {
         subCategoryId = item.id;
+        props.subCategoryTitle = item.title
       }
     });
     const partnersData = await axios.get(

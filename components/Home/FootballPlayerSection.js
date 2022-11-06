@@ -14,7 +14,7 @@ export default function FootballPlayerSection() {
         <Heading className={"text-xl"}>
           <FormattedMessage id="page.home.footballSection.title" />
         </Heading>
-        <Text className="py-3 md:py-10 text-slate-500">
+        <Text className="py-3 md:py-10 text-slate-500 ">
           <FormattedMessage id="page.home.footballSection.description" />
         </Text>
         <SeeMoreButton />

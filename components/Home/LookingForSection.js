@@ -40,11 +40,11 @@ export default function LookingForSection({ data }) {
     ],
   };
   return (
-    <div className="p-2 mb-5 overflow-hidden">
-      <Heading className={"text-3xl md:text-center my-4 lg:mb-8"}>
+    <div className="p-2 mt-3 md:py-10 overflow-hidden">
+      <Heading className={"text-3xl md:text-center mb-4 lg:mb-8"}>
         <FormattedMessage id="page.home.lookingFor.title" values={{b:(chunks)=><span className="yellow">{chunks}</span>}} />
       </Heading>
-      <div className="py-5 lg:px-5">
+      <div className="pt-5 lg:px-5">
         <Slider {...settings}>
           {data.map((item) => {
             return (

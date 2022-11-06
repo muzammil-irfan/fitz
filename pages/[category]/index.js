@@ -9,28 +9,29 @@ import titleToSlugConverter from "../../utils/titleToSlugConverter";
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import CustomImage from "../../components/common/CustomImage";
+import BreadCrumbs from "../../components/common/BreadCrumbs";
 
 
-export default function Category({ dir,categories,data }) {
+export default function Category({ dir,categories,data,categoryDetail }) {
   const router = useRouter();
-  
+  console.log(categoryDetail)
   if (!data) {
     return <div>Loading...</div>;
   }
 
   return (
-    <Layout categories={categories} dir={dir}>
-    <div className="p-2">
-      {/* Home / PTs */}
-      <p className="yellow py-1">{data.length} CATEGORIES</p>
-      <Heading>{data.title}</Heading>
-      <Text className={"py-2"}>{data.description}</Text>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-5 my-4">
+    <Layout categories={categories} dir={dir} className="container mx-auto">
+    <div className="px-4 py-10">
+      <BreadCrumbs data={[{title:"Home",href:"/"},{title:categoryDetail.title,href:`/${titleToSlugConverter(categoryDetail.title)}`}]} />
+      <p className="yellow md:pt-5 font-semibold">{data.length} CATEGORIES</p>
+      <Heading className={"text-3xl my-4"}>{categoryDetail.title}</Heading>
+      <p className={"py-5 text-md"}>{categoryDetail.description}</p>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4 mb-10">
         {data.map((item) => {
           return (
             <Link href={`${router.asPath + "/" + titleToSlugConverter(item.title)}`} key={item.title}>
-              <a>
-                <div className="shadow-md">
+              <a className="">
+                <div className="shadow-lg h-full">
                   <div className="aspect-square relative">
                     {item.img && (
                       <CustomImage
@@ -40,8 +41,8 @@ export default function Category({ dir,categories,data }) {
                       />
                     )}
                   </div>
-                  <div>
-                    <p className="text-center py-2">{item.title}</p>
+                  <div className="">
+                    <p className="text-center text-sm py-4 ">{item.title}</p>
                   </div>
                 </div>
               </a>
@@ -91,6 +92,7 @@ export async function getStaticProps(context) {
   const props = {
     categories: [],
     data: [],
+    categoryDetail:{}
   };
   try {
     //To obtain slug from category
@@ -103,6 +105,7 @@ export async function getStaticProps(context) {
     let slug = categories.data.filter(
       (item) => titleToSlugConverter(item.title) === category 
     );
+    props.categoryDetail = slug[0];
     const categoryPageData = await axios.get(`${backendHost}/category/${slug[0].id}`,{
       headers:{
         "Accept-Language":context.locale

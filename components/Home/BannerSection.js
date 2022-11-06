@@ -13,8 +13,9 @@ export default function BannerSection() {
   return (
     <div className="overflow-hidden relative">
       <div
-        className="absolute z-10  top-1/3 hidden md:block left-10"
+        className="absolute z-10  top-1/3 hidden md:block left-10 "
         onClick={() => sliderRef?.current?.slickPrev()}
+        style={{cursor:"pointer"}}
       >
         <svg
           width="28"
@@ -41,7 +42,7 @@ export default function BannerSection() {
                   <img
                     src={item.url}
                     alt={item.alt}
-                    className="img"
+                    className="img max-h-[50vw] sm:max-h-[300px] md:max-h-[400px] lg:max-h-[500px] xl:max-h-[600px] 2xl:max-h-[700px]"
                   />
                 </picture>
               </div>
@@ -52,6 +53,7 @@ export default function BannerSection() {
       <div
         className="absolute z-10  top-1/3 hidden md:block right-10"
         onClick={() => sliderRef?.current?.slickNext()}
+        style={{cursor:"pointer"}}
       >
         <svg
           width="28"

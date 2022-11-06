@@ -18,7 +18,7 @@ export default function DesktopCategoryCard({
     <Link href={href}>
       <a>
         <div
-          className="hidden sm:flex shadow-md m-4 "
+          className="hidden sm:flex shadow-xl my-5 "
           style={{ cursor: "pointer" }}
         >
           <div className="w-1/3 xl:w-1/4  relative aspect-square">
@@ -32,7 +32,7 @@ export default function DesktopCategoryCard({
                 <BsInstagram />
               </div>
             </div>
-            <p className="py-5 break-all">{description}</p>
+            <p className="py-5 break-all">{description.length > 60 ? description.slice(0,60) + "..." : description }</p>
             <div className="py-2 flex gap-2 items-center">
               <BiMap />
               <p>{location}</p>

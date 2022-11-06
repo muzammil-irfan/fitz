@@ -8,6 +8,7 @@ import backendHost from "../../../utils/backendHost";
 import titleToSlugConverter from "../../../utils/titleToSlugConverter";
 import Layout from "../../../components/Layout";
 import { useRouter } from "next/router";
+import BreadCrumbs from "../../../components/common/BreadCrumbs";
 
 export default function SubCategory({
   categories,
@@ -22,14 +23,14 @@ export default function SubCategory({
     return <p>Loading...</p>;
   }
   return (
-    <Layout dir={dir} categories={categories}>
-      <div className="p-2">
-        {/* Home / PTs */}
-        <p className="yellow py-1">
+    <Layout dir={dir} categories={categories} className="container mx-auto">
+      <div className="px-4 py-10">
+        <BreadCrumbs data={[{title:"Home",href:"/"},{title:categoryName,href:`/${titleToSlugConverter(categoryName)}`},{title:subCategory.title,href:`/${titleToSlugConverter(subCategory.title)}`}]} />
+        <p className="yellow py-5 font-semibold">
           {profiles.length + " " + categoryName.toUpperCase()}{" "}
         </p>
-        <Heading>{subCategory.title}</Heading>
-        <Text className={"py-2"}>{subCategory.description}</Text>
+        <Heading className={"text-3xl"}>{subCategory.title}</Heading>
+        <Text className={"py-8"}>{subCategory.description}</Text>
         {profiles.length > 0 ? (
           <>
             <div>
@@ -42,9 +43,7 @@ export default function SubCategory({
                     )}`}
                     title={item.title}
                     description={item.description}
-                    amount={"No amount"}
                     location={item.location}
-                    language={"No language"}
                     socialMedia={JSON.parse(item.social_media)}
                     imageSrc={JSON.parse(item.media)[0]}
                     imageAlt={item.title}
