@@ -16,9 +16,9 @@ export default function Blog({ dir, categories, post, blogs }) {
   }
   return (
     <Layout dir={dir} categories={categories} className="">
-      <div className="py-5">
+      {/* <div className="py-5">
       <BreadCrumbs data={[{title:"Home",href:"/"},{title:"Blogs",href:"/blog"},{title:post.title,href:`/${titleToSlugConverter(post.title)}`}]} />
-      </div>
+      </div> */}
       <div className="pt-10 ">
         <div className="flex flex-col sm:flex-row-reverse sm:justify-around px-3 pb-5">
           <div className="aspect-square m-2 relative sm:w-1/2 sm:m-5 max-w-[450px] ">
