@@ -4,7 +4,6 @@ import Text from "../components/common/Text";
 import { HiOutlineMail } from "react-icons/hi";
 import { IoCallOutline } from "react-icons/io5";
 import CustomButton from "../components/common/CustomButton";
-import InputBox from "../components/common/InputBox";
 import axios from "axios";
 import backendHost from "../utils/backendHost";
 import { toast } from "react-toastify";
@@ -54,55 +53,55 @@ export default function ContactPage({ dir, categories }) {
     }
   };
   return (
-    <Layout categories={categories} dir={dir}>
-      <div className="pl-2 md:pl-0 py-3">
+    <Layout categories={categories} dir={dir} className="container mx-auto px-2 sm:px-8  xl:px-16">
+      <div className="pl-2 md:pl-0 pb-10  md:pt-4">
         <CommonToast />
 
-        <div className="my-5">
-          <Heading>
+        <div className="mt-6 sm:mt-4 mb-6 sm:mb-10">
+          <Heading className={"sm:py-3 text-3xl"}>
             <FormattedMessage
               id="page.contact.title"
               values={{ b: (chunks) => <b className="yellow">{chunks}</b> }}
             />
           </Heading>
-          <Text className="py-5 md:w-1/2">
+          <p className="py-5 md:w-1/2 text-sm md:text-md">
             <FormattedMessage
               id="page.contact.description"
               values={{ b: (chunks) => <b className="yellow">{chunks}</b> }}
             />
-          </Text>
+          </p>
           <div className="flex gap-2 items-center">
             <HiOutlineMail />
-            <p>FitCornerz@gmail.com</p>
+            <p className="md:text-md">FitCornerz@gmail.com</p>
           </div>
           <div className="flex gap-2 items-center py-3">
             <IoCallOutline />
-            <p className="">00962798907906</p>
+            <p className="md:text-md">00962798907906</p>
           </div>
         </div>
-        <div>
-          <Heading>
+        <div className=" lg:w-2/3">
+          <Heading className={"py-3 sm:py-6 text-3xl"}>
             <FormattedMessage
               id="page.contact.form.title"
               values={{ b: (chunks) => <b className="yellow">{chunks}</b> }}
             />
           </Heading>
-          <div className="grid md:grid-cols-2 gap-3 my-5">
-            <InputBox
+          <div className="grid md:grid-cols-2 gap-5 md:gap-10 my-5 ">
+            <CustomInputBox
               label={intl.formatMessage({ id: "page.contact.form.name" })}
               name="name"
               placeholder="John Doe"
               value={values.name}
               onChange={handleChange}
             />
-            <InputBox
+            <CustomInputBox
               label={intl.formatMessage({ id: "page.contact.form.email" })}
               name="email"
               placeholder="John@gmail.com"
               value={values.email}
               onChange={handleChange}
             />
-            <InputBox
+            <CustomInputBox
               label={intl.formatMessage({
                 id: "page.contact.form.phoneNumber",
               })}
@@ -111,7 +110,7 @@ export default function ContactPage({ dir, categories }) {
               value={values.phoneNumber}
               onChange={handleChange}
             />
-            <InputBox
+            <CustomInputBox
               label={intl.formatMessage({ id: "page.contact.form.subject" })}
               name="subject"
               placeholder="Type here"
@@ -119,27 +118,53 @@ export default function ContactPage({ dir, categories }) {
               onChange={handleChange}
             />
           </div>
-          <div className="pr-3">
+          <div className="pr-3 sm:pr-0 py-3">
             <p className="font-semibold">
               <FormattedMessage id="page.contact.form.message" />
             </p>
             <textarea
               rows={6}
               name={"message"}
-              className="w-full border-slate-100 my-1  border p-2"
+              className="w-full border-slate-100 my-2  border p-4"
               placeholder={"Type here"}
               value={values.message}
               onChange={handleChange}
             />
           </div>
-          <div className="flex justify-end my-3 px-3">
-            <CustomButton onClick={handleSubmit}>
+          <div className="sm:flex justify-end my-3 pr-3 sm:px-3 sm:pr-0  ">
+            <CustomButton onClick={handleSubmit} className="w-full sm:w-min">
               <FormattedMessage id="page.contact.form.submit" />
             </CustomButton>
           </div>
         </div>
       </div>
     </Layout>
+  );
+}
+
+const CustomInputBox = ({
+  name,
+  label,
+  onChange,
+  value,
+  placeholder,
+  type,
+  checked
+}) => {
+  return (
+    <div className="">
+      <p className="font-semibold">{label}</p>
+      <input
+        name={name}
+        className="w-full md:w-full border-slate-100 my-2 border  p-4"
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        type={type}
+        checked={checked}
+        
+      />
+    </div>
   );
 }
 

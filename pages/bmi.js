@@ -15,34 +15,52 @@ import backendHost from "../utils/backendHost";
 import AdultTable from "../components/bmi/AdultTable";
 import ChildrenTable from "../components/bmi/ChildrenTable";
 
-export default function BMIPage({ dir,categories }) {
-  const intl = useIntl();
+export default function BMIPage({ dir, categories }) {
   return (
-    <Layout categories={categories} dir={dir}>
-      <div className="py-5">
-        <Heading>
-          <FormattedMessage id="page.bmi.title"  values={{ b: (chunks) => <b className="yellow">{chunks}</b> }} />
+    <Layout
+      categories={categories}
+      dir={dir}
+      className="container mx-auto px-4 "
+    >
+      <div className="py-10">
+        <Heading className={"py-5 text-4xl"}>
+          <FormattedMessage
+            id="page.bmi.title"
+            values={{ b: (chunks) => <b className="yellow">{chunks}</b> }}
+          />
         </Heading>
-        <p className="my-5">
+        <p className="my-3 sm:my-5">
           <FormattedMessage id="page.bmi.fillFormMessage" />
         </p>
         <BMIForm />
-        <Content
-          title={intl.formatMessage({id:"page.bmi.introduction.title"})}
-          description={intl.formatMessage({id:"page.bmi.introduction.description"})}
-        />
-        <div className="xl:flex justify-between my-2">
-          <Content 
-          title={intl.formatMessage({id:"page.bmi.adult.title"})}
-          description={intl.formatMessage({id:"page.bmi.adult.description"})}
-          />
+        <div className="py-5">
+          <h3 className="text-xl  mb-5 font-bold">
+            <FormattedMessage id="page.bmi.introduction.title" />
+          </h3>
+          <p className="text-lg pr-2">
+            <FormattedMessage id="page.bmi.introduction.description" />
+          </p>
+        </div>
+        <div className="xl:flex justify-between my-5">
+          <div className="py-5 md:w-1/2">
+            <h3 className="text-xl  mb-5 font-bold">
+              <FormattedMessage id="page.bmi.adult.title" />
+            </h3>
+            <p className="text-lg pr-2">
+              <FormattedMessage id="page.bmi.adult.description" />
+            </p>
+          </div>
           <AdultTable />
         </div>
-        <div className="xl:flex justify-between my-2">
-          <Content 
-          title={intl.formatMessage({id:"page.bmi.children.title"})}
-          description={intl.formatMessage({id:"page.bmi.children.description"})}
-          />
+        <div className="xl:flex justify-between my-5">
+          <div className="py-5 md:w-1/2">
+            <h3 className="text-xl  mb-5 font-bold">
+              <FormattedMessage id="page.bmi.children.title" />
+            </h3>
+            <p className="text-lg pr-2">
+              <FormattedMessage id="page.bmi.children.description" />
+            </p>
+          </div>
           <ChildrenTable />
         </div>
         <OverweightSection />
@@ -58,10 +76,10 @@ export async function getStaticProps(context) {
   };
   try {
     //To obtain slug from category
-    const categories = await axios.get(`${backendHost}/category`,{
-      headers:{
-        "Accept-Language":context.locale
-      }
+    const categories = await axios.get(`${backendHost}/category`, {
+      headers: {
+        "Accept-Language": context.locale,
+      },
     });
     props.categories = [...categories.data];
 

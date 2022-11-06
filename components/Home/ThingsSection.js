@@ -11,7 +11,7 @@ export default function ThingsSection() {
             <Image src="/home/image1.png" layout='fill' />
         </div>
         <div className='flex flex-col gap-5 w-1/2 md:w-1/3 justify-center'>
-            <Heading className={"text-md "}>
+            <Heading className={"text-xl "}>
             {/* Lorem <span className='yellow'>ipsumsim</span> dolor amet */}
             <FormattedMessage id="page.home.thingsSection1.title"  />
             </Heading>

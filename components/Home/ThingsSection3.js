@@ -11,8 +11,7 @@ export default function ThingsSection3() {
   return (
     <div className='flex justify-evenly  px-5 py-10'>
         <div className='flex flex-col gap-5 w-1/3 justify-center'>
-            <Heading >
-            {/* Lorem <span className='yellow'>ipsumsim</span> dolor amet */}
+            <Heading className={"text-xl"} >
             <FormattedMessage id="page.home.thingsSection3.title"  />
             </Heading>
             <Text className='text-slate-500'>

@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "../styles/bmiform.css";
 import { useEffect } from "react";
 import Cookies from 'js-cookie'
 import ar from "../lang/ar.json";

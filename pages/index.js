@@ -14,9 +14,7 @@ import BlogSection from "../components/Home/BlogSection";
 import axios from "axios";
 import backendHost from "../utils/backendHost";
 
-export default function Home({dir,categories,blogs}) {
-  
-  
+export default function Home({ dir, categories, blogs }) {
   return (
     <Layout categories={categories} dir={dir}>
       <Head>
@@ -25,10 +23,12 @@ export default function Home({dir,categories,blogs}) {
         <link rel="icon" href="/logo-small.png" />
       </Head>
 
-        <BannerSection />
+      <BannerSection />
+      <div className="container mx-auto">
         <LookingForSection data={categories} />
         <BlogSection data={blogs} />
         <BmiCalculatorSection />
+      </div>
         <ThingsSection />
         <FootballPlayerSection />
         <ThingsSection2 />
@@ -41,32 +41,32 @@ export default function Home({dir,categories,blogs}) {
 export async function getStaticProps(context) {
   const props = {
     categories: [],
-    blogs:[]
+    blogs: [],
   };
   try {
     //To obtain slug from category
-    const {locale} = context;
+    const { locale } = context;
     // const config = {
     //   headers:{
     //     "Accept-Language":locale
     //   }
     // }
-    const categories = await axios.get(`${backendHost}/category`,{
-      headers:{
-        "Accept-Language":locale
-      }
+    const categories = await axios.get(`${backendHost}/category`, {
+      headers: {
+        "Accept-Language": locale,
+      },
     });
     props.categories = [...categories.data];
-    const blogs = await axios.get(`${backendHost}/blog`,{
-      headers:{
-        "Accept-Language":locale
-      }
+    const blogs = await axios.get(`${backendHost}/blog`, {
+      headers: {
+        "Accept-Language": locale,
+      },
     });
     props.blogs = [...blogs.data];
-    
-    return {props};
+
+    return { props };
   } catch (err) {
     console.log(err);
-    return {props};
+    return { props };
   }
 }

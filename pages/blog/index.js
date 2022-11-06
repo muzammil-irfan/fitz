@@ -10,7 +10,7 @@ export default function Blog({ dir,categories,posts }) {
     return <div>Loading...</div>
   }
   return (
-    <Layout dir={dir} categories={categories}>
+    <Layout dir={dir} categories={categories} className="container mx-auto">
     <div className="grid md:grid-cols-3 my-5">
       {posts.length > 0 ? (
         posts.map((item) => {
@@ -19,9 +19,7 @@ export default function Blog({ dir,categories,posts }) {
               key={item.id}
               href={`/blog/${item.slug}`}
               imageSrc={item.media[0]}
-              category={"No Category"}
               title={item.title}
-              description={"There is not any short description in the data"}
             />
           );
         })

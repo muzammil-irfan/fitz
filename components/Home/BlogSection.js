@@ -41,7 +41,7 @@ export default function BlogSection({ data }) {
     <div className="sm:text-center overflow-hidden px-2 ">
       <Heading className={"text-3xl my-5 lg:my-10"}>
         {/* From Our <span className="yellow">Blogs</span> */}
-        <FormattedMessage id="page.home.blogSection.title" />
+        <FormattedMessage id="page.home.blogSection.title" values={{b:(chunks)=><span className="yellow">{chunks}</span>}} />
       </Heading>
       {/* <div className="my-5"> */}
       {data && data.length > 2 ? (

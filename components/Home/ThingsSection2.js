@@ -14,12 +14,10 @@ export default function ThingsSection2() {
             <Image src="/home/image2.png" layout='fill' />
         </div>
         <div className='flex flex-col gap-5 w-1/2  md:w-1/3 justify-center'>
-            <Heading >
-            {/* Lorem <span className='yellow'>ipsumsim</span> dolor amet */}
+            <Heading className="text-xl" >
             <FormattedMessage id="page.home.thingsSection2.title"  />
             </Heading>
             <Text className='text-slate-500'>
-            {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.consectetur elit. */}
             <FormattedMessage id="page.home.thingsSection2.description"  />
             </Text>
             <div>

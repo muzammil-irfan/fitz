@@ -3,7 +3,7 @@ import React from 'react'
 export default function Content({className, title, description}) {
   return (
     <div className={`${className} py-5`}>
-         <p className="font-bold">{title}</p>
+         <h3 className="font-bold text-">{title}</h3>
         <p className="py-3">
             {description}
         </p>

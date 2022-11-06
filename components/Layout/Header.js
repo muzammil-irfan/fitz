@@ -12,8 +12,8 @@ export default function Header({ categories }) {
   const [sidebar, setSidebar] = useState(false);
   const intl = useIntl();
   return (
-    <div className="py-5 shadow-sm">
-      <div className="flex md:hidden justify-between px-5 items-center container mx-auto">
+    <div className="py-5 shadow-md sticky top-0 bg-white px-2 md:px-4 z-[99]">
+      <div className="flex md:hidden justify-between px-5 items-center mx-auto ">
         <img src="/logo-small.png" />
         <TbMenu
           onClick={() => {
@@ -38,15 +38,20 @@ export default function Header({ categories }) {
           <FormattedMessage id="page.header.more" />
         </h3>
         <div className="flex items-center my-4 font-medium">
-          <Link href={router.asPath} locale="en">
+          <Link href={"/"} locale="en">
             <a>
-            <p className={`pr-1 ${router.locale === "en" && "yellow"}`}>English</p>
+              <p className={`pr-1 ${router.locale === "en" && "yellow"}`}>
+                English
+              </p>
             </a>
           </Link>
           <p>|</p>
-          <Link href={router.asPath} locale="ar">
+          <Link href={"/"} locale="ar">
             <a>
-            <p className={`pr-1 ${router.locale === "ar" && "yellow"}`}> عربی</p>
+              <p className={`pr-1 ${router.locale === "ar" && "yellow"}`}>
+                {" "}
+                عربی
+              </p>
             </a>
           </Link>
         </div>
@@ -60,8 +65,7 @@ export default function Header({ categories }) {
                     setSidebar(false);
                   }}
                 >
-                  {intl.formatMessage({id:`page.header.${item.name}`})}
-          
+                  {intl.formatMessage({ id: `page.header.${item.name}` })}
                 </p>
               </a>
             </Link>
@@ -72,7 +76,7 @@ export default function Header({ categories }) {
         </h3>
         {categories.map((item) => {
           return (
-            <Link href={"/"+titleToSlugConverter(item.title)} key={item.id}>
+            <Link href={"/" + titleToSlugConverter(item.title)} key={item.id}>
               <a>
                 <p
                   className="my-3 break-all"
@@ -88,23 +92,31 @@ export default function Header({ categories }) {
         })}
       </div>
       {/* Desktop header */}
-      <div className="hidden md:flex justify-between  container mx-auto ">
+      <div className="hidden md:flex  justify-around ">
         <img src="/logo.png" className="" />
-        <div className="flex items-center gap-4 ">
+        <div className="flex items-center gap-8 lg:gap-12 ">
           {headerLinks.map((item) => {
-            return <HeaderLink key={item.name} href={item.href} name={intl.formatMessage({id:`page.header.${item.name}`})} />;
+            return (
+              <HeaderLink
+                key={item.name}
+                href={item.href}
+                name={intl.formatMessage({ id: `page.header.${item.name}` })}
+              />
+            );
           })}
         </div>
-        <div className="flex items-center justify-center">
-        <Link href={router.asPath} locale="en">
+        <div className="flex  items-center justify-center ">
+          <Link href={"/"} locale="en">
             <a>
-            <p className={` ${router.locale === "en" && "yellow"}`}>English</p>
+              <p className={` ${router.locale === "en" && "yellow"}`}>
+                English
+              </p>
             </a>
           </Link>
           <p className="mx-2">|</p>
-          <Link href={router.asPath} locale="ar">
+          <Link href={"/"} locale="ar">
             <a>
-            <p className={` ${router.locale === "ar" && "yellow"}`}> عربی</p>
+              <p className={` ${router.locale === "ar" && "yellow"}`}> عربی</p>
             </a>
           </Link>
         </div>
@@ -113,7 +125,7 @@ export default function Header({ categories }) {
   );
 }
 
-const HeaderLink = ({ name,href }) => {
+const HeaderLink = ({ name, href }) => {
   const router = useRouter();
   const pN = router.asPath;
   return (

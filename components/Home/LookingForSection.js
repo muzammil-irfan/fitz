@@ -42,7 +42,7 @@ export default function LookingForSection({ data }) {
   return (
     <div className="p-2 mb-5 overflow-hidden">
       <Heading className={"text-3xl md:text-center my-4 lg:mb-8"}>
-        <FormattedMessage id="page.home.lookingFor.title" />
+        <FormattedMessage id="page.home.lookingFor.title" values={{b:(chunks)=><span className="yellow">{chunks}</span>}} />
       </Heading>
       <div className="py-5 lg:px-5">
         <Slider {...settings}>
@@ -69,10 +69,10 @@ const SkewedCard = ({ href, image, name, id }) => {
         className="bg-white -skew-x-6  shadow-inner drop-shadow-sm flex flex-col items-center mt-5 mx-2 lg:mx-3"
         style={{ cursor: "pointer" }}
       >
-        <div className="relative  bottom-5 skew-x-6 h-[80px] w-[60px] ">
-          <Image src={image} alt={name} layout="fill" />
+        <div className="relative  bottom-5 skew-x-6 h-12 sm:h-14 md:h-16 lg:h-20 xl:h-28 2xl:h-32  w-2/3 ">
+          <Image src={image} alt={name} width="140px" height="140px" layout="responsive" />
         </div>
-        <p className="text-center text-xs p-1">{name}</p>
+        <p className="text-center text-xs py-2 break-all">{name}</p>
       </div>
     </Link>
   );

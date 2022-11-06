@@ -7,14 +7,14 @@ import BlogSection from "../../components/Home/BlogSection";
 import Layout from "../../components/Layout";
 import backendHost from "../../utils/backendHost";
 
-export default function Blog({ dir,categories, post }) {
-  if (!post) {
+export default function Blog({ dir, categories, post, blogs }) {
+  if (!post || !blogs) {
     return <div>Loading...</div>;
   }
   return (
-    <Layout dir={dir} categories={categories}>
-      <div>
-        <div className="flex flex-col sm:flex-row-reverse sm:justify-around px-3">
+    <Layout dir={dir} categories={categories} className="">
+      <div className="pt-10 ">
+        <div className="flex flex-col sm:flex-row-reverse sm:justify-around px-3 pb-5">
           <div className="aspect-square m-2 relative sm:w-1/2 sm:m-5 max-w-[450px] ">
             <CustomImage
               src={post.media[0] && post.media[0]}
@@ -25,7 +25,11 @@ export default function Blog({ dir,categories, post }) {
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
           </div>
         </div>
-        {/* <BlogSection /> */}
+        <div className="bg-[#F8F8F8] pt-3 pb-12 px-3">
+          <div className="container mx-auto">
+          <BlogSection data={blogs.filter((item) => item.id !== post.id)} />
+          </div>
+        </div>
       </div>
     </Layout>
   );
@@ -37,25 +41,31 @@ export async function getStaticPaths() {
     fallback: true,
   };
   try {
-    const blog = await axios.get(`${backendHost}/blog`,{
-      headers:{
-        "Accept-Language":"en"
-      }
+    const blog = await axios.get(`${backendHost}/blog`, {
+      headers: {
+        "Accept-Language": "en",
+      },
     });
-    const blogAr = await axios.get(`${backendHost}/blog`,{
-      headers:{
-        "Accept-Language":"ar"
-      }
+    const blogAr = await axios.get(`${backendHost}/blog`, {
+      headers: {
+        "Accept-Language": "ar",
+      },
     });
     const pathsEn =
       blog.data?.length > 0
-        ? blog.data.map((item) => ({ params: { slug: item.slug },locale:"en" }))
+        ? blog.data.map((item) => ({
+            params: { slug: item.slug },
+            locale: "en",
+          }))
         : { params: {} };
     const pathsAr =
       blogAr.data?.length > 0
-        ? blogAr.data.map((item) => ({ params: { slug: item.slug },locale:"ar" }))
+        ? blogAr.data.map((item) => ({
+            params: { slug: item.slug },
+            locale: "ar",
+          }))
         : { params: {} };
-    returnObj.paths = [...pathsEn,...pathsAr];
+    returnObj.paths = [...pathsEn, ...pathsAr];
     return returnObj;
   } catch (err) {
     console.log(err);
@@ -66,23 +76,29 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const { params } = context;
   const props = {
+    blogs: [],
     post: undefined,
     categories: [],
     revalidate: 10,
   };
   try {
     const headers = {
-      "Accept-Language":context.locale
-    }
-    const blog = await axios.get(`${backendHost}/blog/view`, { params,headers });
+      "Accept-Language": context.locale,
+    };
+    const allBlogs = await axios.get(`${backendHost}/blog`, { headers });
+    props.blogs = allBlogs.data;
+    const blog = await axios.get(`${backendHost}/blog/view`, {
+      params,
+      headers,
+    });
     props.post = blog.data;
-    const categories = await axios.get(`${backendHost}/category`,{
-      headers:{
-        "Accept-Language":context.locale
-      }
+    const categories = await axios.get(`${backendHost}/category`, {
+      headers: {
+        "Accept-Language": context.locale,
+      },
     });
     props.categories = categories.data;
-    return {props};
+    return { props };
   } catch (err) {
     console.log(err);
     return {

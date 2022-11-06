@@ -5,13 +5,13 @@ import { FormattedMessage } from "react-intl";
 export default function ChildrenTable() {
     const router = useRouter();
   return (
-    <div className="py-10">
-      <table>
+    <div className="py-5 md:py-0">
+      <table className="text-xs w-full sm:text-sm md:text-md md:w-[500px]">
         <tr className="text-center bg-gray-200">
-          <th className="py-2 w-48">
+          <th className="py-2 w-52">
             <FormattedMessage id="page.bmi.children.table.title.category" />
           </th>
-          <th className="py-2 w-48">
+          <th className="py-2 w-52 ">
             <FormattedMessage id="page.bmi.children.table.title.range" />
           </th>
         </tr>

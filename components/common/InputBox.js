@@ -7,7 +7,8 @@ export default function InputBox({
   value,
   placeholder,
   type,
-  checked
+  checked,
+  className
 }) {
   return (
     <div className="">
@@ -20,6 +21,7 @@ export default function InputBox({
         onChange={onChange}
         type={type}
         checked={checked}
+        
       />
     </div>
   );

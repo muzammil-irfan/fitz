@@ -6,15 +6,18 @@ function CustomImage({alt, ...props}) {
     const [src, setSrc] = React.useState(srcHref);
   
     return (
-      <img
-        {...props}
-        src={src}
-        alt={alt} // To fix lint warning 
-        onError={() => setSrc('/error-image.png')}
-        placeholder="blur"
-        blurdataurl="/error-image.png"
-        className="max-w-100"
-      />
+      <picture>
+        <source srcSet={src} />
+        <img
+          {...props}
+          src={src}
+          alt={alt} // To fix lint warning 
+          onError={() => setSrc('/error-image.png')}
+          placeholder="blur"
+          blurdataurl="/error-image.png"
+          className="img max-h-[180px] lg:max-h-[250px] overflow-hidden"
+        />
+      </picture>
     );
   }
 export default CustomImage;

@@ -16,8 +16,8 @@
     "page.home.downloadAppSection.title":"Lorem ipsumsim dolor amet",
     "page.home.downloadAppSection.description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",
     "page.home.seemore.button":"See more",
-    "page.home.blogSection.title":"From Our Blogs",
-    "page.home.lookingFor.title":"What Are You Looking For?",
+    "page.home.blogSection.title":"From Our <b>Blogs</b>",
+    "page.home.lookingFor.title":"What Are You <b>Looking For?</b>",
 
     "page.header.more":"More",
     "page.header.downloadApp":"Download the app",
