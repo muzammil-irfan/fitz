@@ -8,13 +8,13 @@ import { FormattedMessage } from 'react-intl'
 
 export default function DownloadAppSection() {
   return (
-    <div className="flex justify-evenly bg-slate-50 px-5 pt-10">
-      <div className="aspect-square relative w-1/3 lg:w-1/4">
+    <div className="flex justify-evenly bg-slate-50 sm:px-5 pt-10">
+      <div className="aspect-square relative w-2/5 lg:w-1/4">
         <Image src="/home/download-app.png" layout="fill" />
       </div>
-      <div className="flex flex-col gap-5 w-1/3 justify-center">
+      <div className="flex flex-col gap-3 sm:gap-5 w-1/3 justify-center">
         <Heading className="text-xl">
-          <FormattedMessage id="page.home.downloadAppSection.title"  />
+          <FormattedMessage id="page.home.downloadAppSection.title" values={{b:(chunks)=><span className="text-brand">{chunks}</span>}} />
         </Heading>
         <Text className="text-slate-500">
           <FormattedMessage id="page.home.downloadAppSection.description"  />

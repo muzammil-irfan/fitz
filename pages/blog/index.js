@@ -12,9 +12,6 @@ export default function Blog({ dir,categories,posts }) {
   }
   return (
     <Layout dir={dir} categories={categories} className="container mx-auto">
-      {/* <div className="pt-5 pl-1">
-      <BreadCrumbs data={[{title:"Home",href:"/"},{title:"Blogs",href:"/blog"}]} />
-      </div> */}
     <div className="grid md:grid-cols-3 my-5">
       {posts.length > 0 ? (
         posts.map((item) => {

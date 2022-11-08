@@ -14,7 +14,11 @@ export default function Header({ categories }) {
   return (
     <div className="py-5 shadow-md sticky top-0 bg-white px-2 md:px-4 z-[99]">
       <div className="flex md:hidden justify-between px-5 items-center mx-auto ">
+        <Link href="/">
+          <a>
         <img src="/logo-small.png" />
+          </a>
+        </Link>
         <TbMenu
           onClick={() => {
             setSidebar(true);
@@ -93,8 +97,12 @@ export default function Header({ categories }) {
       </div>
       {/* Desktop header */}
       <div className="hidden md:flex  justify-around ">
-        <img src="/logo.png" className="" />
-        <div className="flex items-center gap-8 lg:gap-12 ">
+        <Link href="/">
+          <a>
+            <img src="/logo.png" className="" />
+          </a>
+        </Link>
+        <div className="flex items-center w-1/2 gap-8 lg:gap-12 ">
           {headerLinks.map((item) => {
             return (
               <HeaderLink

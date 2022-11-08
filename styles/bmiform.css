@@ -1,22 +1,19 @@
 .radio-container{
     margin: 0;
     padding: 0;
-      overflow: auto;
       display: flex; 
       align-items: center;
       justify-content: center;
-      width:fit-content;
+      width:min-content;
   }
   
   .radio-subcontainer{
     color: #000;
     display: block;
     position: relative;
-    /* float: left; */
     width: 100%;
     left:-30px;
     top:-10px;
-    /* height: 100px; */
   }
   @media (min-width:800px){
     .radio-subcontainer{

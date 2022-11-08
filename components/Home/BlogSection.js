@@ -5,27 +5,39 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FormattedMessage } from 'react-intl'
+import { useRouter } from "next/router";
 
 export default function BlogSection({ data }) {
+  const {locale} = useRouter()
   const settings = {
     dots: false,
     Infinity: false,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: data.length > 2 ? 3 : data.length,
     initialSlides: 0,
+    rtl:locale==="ar",
     responsive: [
+      {
+        breakpoint: 1500,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+          
+        },
+      },
       {
         breakpoint: 1050,
         settings: {
           slidesToShow: 2.5,
           slidesToScroll: 2,
-          // initialSlide: 2
+          
         },
       },
       {
         breakpoint: 700,
         settings: {
           slidesToShow: 1.5,
+
         },
       },
       {
@@ -43,8 +55,9 @@ export default function BlogSection({ data }) {
         {/* From Our <span className="yellow">Blogs</span> */}
         <FormattedMessage id="page.home.blogSection.title" values={{b:(chunks)=><span className="yellow">{chunks}</span>}} />
       </Heading>
-      {/* <div className="my-5"> */}
-      {data && data.length > 2 ? (
+      <div className="my-5 md:my-10">
+      {data && data.length > 1 ? (
+        <div style={{cursor:"grab"}} >
         <Slider {...settings}>
           {data.map((item) => {
             return (
@@ -57,8 +70,9 @@ export default function BlogSection({ data }) {
             );
           })}
         </Slider>
+        </div>
       ) : data.length > 0 ? (
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 my-5">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 ">
           {data.map((item) => {
             return (
               <BlogCard
@@ -73,7 +87,7 @@ export default function BlogSection({ data }) {
       ) : (
         <div>No blogs posted yet</div>
       )}
-      {/* </div> */}
+      </div>
     </div>
   );
 }

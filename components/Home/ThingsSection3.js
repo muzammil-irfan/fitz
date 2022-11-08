@@ -10,7 +10,7 @@ import { FormattedMessage } from 'react-intl'
 export default function ThingsSection3() {
   return (
     <div className='flex justify-evenly  px-5 py-10'>
-        <div className='flex flex-col gap-5 w-1/3 justify-center'>
+        <div className='flex flex-col gap-3 sm:gap-5 w-1/2 sm:w-1/3 justify-center'>
             <Heading className={"text-xl"} >
             <FormattedMessage id="page.home.thingsSection3.title"  />
             </Heading>

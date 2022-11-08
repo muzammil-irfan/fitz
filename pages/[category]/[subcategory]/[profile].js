@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Heading from "../../../components/common/Heading";
 import { BiMap, BiDollarCircle, BiPhone } from "react-icons/bi";
 import { MdMailOutline } from "react-icons/md";
@@ -13,6 +13,7 @@ import CustomImage from "../../../components/common/CustomImage";
 import Slider from "react-slick";
 import BreadCrumbs from "../../../components/common/BreadCrumbs";
 import ProfileModal from "../../../components/profileView/ProfileModal";
+import { useRouter } from "next/router";
 
 export default function Lena({
   dir,
@@ -21,40 +22,48 @@ export default function Lena({
   categoryTitle,
   subCategoryTitle,
 }) {
-  const [modal,setModal] = React.useState(false);
-
+  const [modal, setModal] = React.useState(false);
+  const { locale } = useRouter();
+  useEffect(()=>{
+    const escFunc = (e)=>{
+      if(e.key === "Escape"){
+        e.preventDefault();
+        setModal(!modal)
+      }
+    }
+    if(modal){
+      document.addEventListener("keydown",escFunc);
+    } else {
+      document.removeEventListener('keydown', escFunc);
+    }
+  },[modal])
   const settings = {
     dots: false,
-    Infinity: false,
+    infinite: false,
     speed: 500,
-    slidesToShow: 3,
-    initialSlides: 0,
+    slidesToShow: 3.5,
+    initialSlide: 0,
+    slidesToScroll:1,
+    rtl:locale === "ar" ,
     responsive: [
       {
-        breakpoint: 1050,
+        breakpoint: 1535,
+        settings: {
+          slidesToShow: 3.5,
+        },
+      },
+      {
+        breakpoint: 1100,
         settings: {
           slidesToShow: 2.5,
-          slidesToScroll: 2
-        },
-      },
-      {
-        breakpoint: 700,
-        settings: {
-          slidesToShow: 1.5,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1.05,
         },
       },
     ],
   };
-  const handleClick = ()=>{
+  const handleClick = () => {
     setModal(true);
-    document.body.style.overflow = "hidden"
-  }
+    document.body.style.overflow = "hidden";
+  };
   if (!profiles) {
     return <div>Loading...</div>;
   }
@@ -62,103 +71,114 @@ export default function Lena({
   const social_media = JSON.parse(profiles.social_media);
   return (
     <>
-    <ProfileModal modal={modal} media={media} setModal={setModal} />
-    <Layout
-      dir={dir}
-      categories={categories}
-      className={`container mx-auto pb-8 ${modal ? "overflow-hidden" : ""}`}
-    >
-      <div className="p-5">
-        <BreadCrumbs
-          data={[
-            { title: "Home", href: "/" },
-            {
-              title: categoryTitle,
-              href: `/${titleToSlugConverter(categoryTitle)}`,
-            },
-            {
-              title: subCategoryTitle,
-              href: `/${titleToSlugConverter(
-                categoryTitle
-              )}/${titleToSlugConverter(subCategoryTitle)}`,
-            },
-            {
-              title: profiles.title,
-              href: `/${titleToSlugConverter(
-                profiles.title + " " + profiles.id
-              )}`,
-            },
-          ]}
-        />
-        <div className="flex  my-4 md:my-10" style={{ cursor: "pointer" }}>
-          <div className="w-1/2 sm:w-1/3   relative aspect-square" style={{cursor:"pointer"}} onClick={handleClick}>
-            <Image
-              src={media.length > 0 && media[0]}
-              alt={profiles.title}
-              layout="fill"
-            />
-          </div>
-          <div className="pl-5 md:pl-8 pr-3 py-1  w-full">
-            <div className="sm:flex  justify-between ">
-              <h2 className="text-xl sm:text-4xl  lg:text-5xl font-semibold ">
-                {profiles.title}
-              </h2>
-              <div className="flex my-5 text-xl sm:my-3 gap-3 yellow">
-                <a href={social_media["facebook"]}>
-                  <BsFacebook />
-                </a>
-                <a href={social_media["instagram"]}>
-                  <BsInstagram />
-                </a>
-              </div>
-            </div>
-            <div className="hidden sm:block my-2 lg:my-10">
-              <CotentBox
-                description={profiles.description}
-                email={profiles.email}
-                contact={profiles.phone_number}
+      <ProfileModal modal={modal} media={media} setModal={setModal} />
+      <Layout
+        dir={dir}
+        categories={categories}
+        className={`container mx-auto pb-8 ${modal ? "overflow-hidden" : ""}`}
+      >
+        <div className="p-5">
+          <BreadCrumbs
+            data={[
+              { title: "Home", href: "/" },
+              {
+                title: categoryTitle,
+                href: `/${titleToSlugConverter(categoryTitle)}`,
+              },
+              {
+                title: subCategoryTitle,
+                href: `/${titleToSlugConverter(
+                  categoryTitle
+                )}/${titleToSlugConverter(subCategoryTitle)}`,
+              },
+              {
+                title: profiles.title,
+                href: `/${titleToSlugConverter(
+                  profiles.title + " " + profiles.id
+                )}`,
+              },
+            ]}
+          />
+          <div className="flex  my-4 md:my-10 md:pb-10 " style={{ cursor: "pointer" }}>
+            <div
+              className="w-1/2 sm:w-1/3   relative aspect-square"
+              style={{ cursor: "pointer" }}
+              
+            >
+              <Image
+                src={media.length > 0 && media[0]}
+                alt={profiles.title}
+                layout="fill"
               />
             </div>
-          </div>
-        </div>
-        <div className="block sm:hidden my-4">
-          <CotentBox
-            description={profiles.description}
-            email={profiles.email}
-            contact={profiles.phone_number}
-          />
-        </div>
-        <div className="my-4">
-          {media && media.length > 3 ? (
-            <Slider {...settings}>
-              {media.map((item) => {
-                return <CustomImage key={item} src={item} />;
-              })}
-            </Slider>
-          ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 my-5 gap-4">
-              {media.map((item) => {
-                return <CustomImage key={item} src={item} />;
-              })}
+            <div className="pl-5 md:pl-8 pr-3 py-1  w-full">
+              <div className="sm:flex  justify-between ">
+                <h2 className="text-xl sm:text-4xl  lg:text-5xl font-semibold ">
+                  {profiles.title}
+                </h2>
+                <div className="flex my-5 text-xl sm:my-3 gap-3 yellow">
+                  <a href={social_media["facebook"]}>
+                    <BsFacebook />
+                  </a>
+                  <a href={social_media["instagram"]}>
+                    <BsInstagram />
+                  </a>
+                </div>
+              </div>
+              <div className="hidden sm:block my-2 lg:my-10">
+                <CotentBox
+                  description={profiles.description}
+                  email={profiles.email}
+                  contact={profiles.phone_number}
+                />
+              </div>
             </div>
-          )}
-        </div>
-        <div className="my-4">
-          <Heading className="text-3xl font-black py-3">More Details</Heading>
-          <div className="py-2 flex gap-2 items-center">
-            <BiMap />
-            <p>{profiles.location}</p>
           </div>
-          <div
-            dangerouslySetInnerHTML={{ __html: profiles.attributes_values_en }}
-            className="my-5"
-          />
+          <div className="block sm:hidden my-4">
+            <CotentBox
+              description={profiles.description}
+              email={profiles.email}
+              contact={profiles.phone_number}
+            />
+          </div>
+          <div className="py-4 md:mt-5 relative" style={{cursor:"grab"}}>
+            {media?.length > 0 && (
+              <Slider {...settings}>
+                {[...media,...media].map((item, index) => {
+                  return <ImageBox key={item} src={item} handleClick={handleClick} />;
+                })}
+              </Slider>
+            )}
+            <div className="h-full w-[50px] top-0 right-[0]  absolute " style={{background:"linear-gradient(90deg,rgba(255,255,255,0) 0%, rgba(255,255,255,1) 90%)"}}></div>
+          </div>
+          <div className="my-4">
+            <Heading className="text-3xl font-black py-3">More Details</Heading>
+            <div className="py-2 flex gap-2 items-center">
+              <BiMap />
+              <p>{profiles.location}</p>
+            </div>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: profiles.attributes_values_en,
+              }}
+              className="my-5"
+            />
+          </div>
         </div>
-      </div>
-    </Layout>
+      </Layout>
     </>
   );
 }
+const ImageBox = ({ src,handleClick }) => {
+  return (
+    <div className="my-2 mr-2  max-w-[300px] " style={{boxShadow:"0px 8px 30px rgba(0, 0, 0, 0.1)"}} >
+      <picture>
+        <source srcSet={src} />
+        <img alt="" className=" min-h-[120px]  lg:md:min-h-[300px] " style={{cursor:"pointer"}} onClick={handleClick} />  
+      </picture>
+    </div>
+  );
+};
 const sportsList = [
   "Core Fitness",
   "Muscle Toning",

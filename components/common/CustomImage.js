@@ -12,9 +12,10 @@ function CustomImage({alt, ...props}) {
           {...props}
           src={src}
           alt={alt} // To fix lint warning 
-          onError={() => setSrc('/error-image.png')}
+          onError={() => setSrc('/error.png')}
           placeholder="blur"
-          blurdataurl="/error-image.png"
+          blurdataurl="/error.png"
+          objectFit="contain"
           className="img max-h-[180px] lg:max-h-[250px] overflow-hidden"
         />
       </picture>

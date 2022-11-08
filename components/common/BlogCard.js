@@ -3,20 +3,20 @@ import Image from "next/image";
 import Link from "next/link";
 import CustomImage from "./CustomImage";
 
-export default function BlogCard({ href,imageSrc, title }) {
+export default function BlogCard({ href, imageSrc, title }) {
   return (
-    <Link href={href} passHref>
-    <div className="m-2 shadow-md" style={{cursor:"pointer"}}>
-      <div className="relative min-h-[200px]">
-        <CustomImage
-          src={imageSrc}
-          alt=""
-        />
-      </div>
-      <div className="text-left p-3">
+    <div className="m-2 shadow-lg" style={{ cursor: "grab" }}>
+      <Link href={href} passHref>
+        <div className="relative min-h-[180px] lg:min-h-[250px]  " style={{cursor:"pointer"}}>
+          <CustomImage
+            src={imageSrc.length < 8 ? "/error.png" : imageSrc}
+            alt=""
+          />
+        </div>
+      </Link>
+      <div className="text-left px-3 py-5">
         <h3 className="font-bold text-xl">{title}</h3>
       </div>
     </div>
-    </Link>
   );
 }

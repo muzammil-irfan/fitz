@@ -19,10 +19,14 @@ export default function ProfileModal({ modal, setModal, media }) {
     <div
       className={`${
         modal ? "" : "hidden"
-      } absolute w-screen h-screen bg-gray-100/50 z-[100]  top-0`}
+      } fixed top-0 w-screen h-screen bg-gray-100/50 z-[100]  `}
+      
     >
       <div className="relative w-full h-full flex items-center justify-center">
-        <div className="bg-white container pb-10 w-[90%] shadow-xl">
+        <div className="absolute h-screen w-screen " onClick={handleClose}>
+
+        </div>
+        <div className="bg-white container pb-10 w-[90%] shadow-xl z-[102]">
           <div className="flex justify-end pr-1 sm:pr-5">
             <div className="relative top-10 bg-slate-300 p-2 rounded-full" onClick={handleClose} style={{cursor:"pointer"}}>
               <AiOutlineClose size="24px" />
@@ -51,7 +55,7 @@ export default function ProfileModal({ modal, setModal, media }) {
             <div className="w-3/4">
               <Slider {...settings} ref={sliderRef}>
                 {media.map((item) => {
-                  return <img src={item} key={item} />;
+                  return <img src={item} key={item} className="px-1" />;
                 })}
               </Slider>
             </div>

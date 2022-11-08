@@ -8,7 +8,7 @@ import titleToSlugConverter from "../../utils/titleToSlugConverter";
 export default function Footer({categories}) {
   const intl = useIntl();
   return (
-    <footer className="yellow-background py-8 ">
+    <footer className="yellow-background py-10 w-full ">
       <div className="container mx-auto px-3">
         <img src="/logo-white.png"  />
         <div className="flex justify-between my-4 pb-5 flex-col md:flex-row gap-2 ">
