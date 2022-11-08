@@ -24,7 +24,7 @@ export default function Home({ dir, categories, blogs }) {
       </Head>
 
       <BannerSection />
-      <div className="container mx-auto">
+      <div className="container mx-auto px-3 md:max-w-[90%] lg:max-w-[80%]">
         <LookingForSection data={categories} />
         <BlogSection data={blogs} />
         <BmiCalculatorSection />

@@ -7,11 +7,11 @@ export default function AdultTable() {
   return (
     <div className='py-5 sm:py-0'>
         <table className='text-xs w-full sm:text-sm md:text-md md:w-[500px]'> 
-            <tr className='text-center bg-gray-200'>
-                <th className='py-2 '>
+            <tr className='text-center bg-[#e7e8e8]'>
+                <th className='py-4 border-r border-white font-[600]'>
                     <FormattedMessage id="page.bmi.adult.table.title.category" />
                 </th>
-                <th className='py-2 '>
+                <th className='py-4 font-[600]'>
                     <FormattedMessage id="page.bmi.adult.table.title.range" />
                 </th>
             </tr>
@@ -19,8 +19,8 @@ export default function AdultTable() {
                 categoryList[router.locale].map((item,index)=>{
                     return (
                         <tr key={item} className=''>
-                            <td className='text-center py-2 border'>{item}</td>
-                            <td className='text-center py-2 border'>{rangeList[index]}</td>
+                            <td className='text-center py-3 border'>{item}</td>
+                            <td className='text-center py-3 border'>{rangeList[index]}</td>
                         </tr>
                     )
                 })

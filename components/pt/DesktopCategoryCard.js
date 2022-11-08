@@ -18,16 +18,16 @@ export default function DesktopCategoryCard({
     <Link href={href}>
       <a>
         <div
-          className="hidden sm:flex shadow-xl my-5 "
+          className="hidden md:flex shadow-xl my-6 "
           style={{ cursor: "pointer" }}
         >
           <div className="w-1/3 xl:w-1/4  relative aspect-square">
             <Image src={imageSrc} alt={imageAlt} layout="fill" />
           </div>
-          <div className="p-5 w-full">
+          <div className="p-10 w-full">
             <div className="flex justify-between ">
-              <p className="text-lg font-bold ">{title}</p>
-              <div className="flex gap-3 yellow">
+              <p className="text-2xl font-bold ">{title}</p>
+              <div className="flex text-xl gap-5 yellow">
                 <BsFacebook />
                 <BsInstagram />
               </div>

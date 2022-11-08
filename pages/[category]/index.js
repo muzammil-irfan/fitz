@@ -20,8 +20,8 @@ export default function Category({ dir,categories,data,categoryDetail }) {
   }
 
   return (
-    <Layout categories={categories} dir={dir} className="container mx-auto">
-    <div className="px-4 py-10">
+    <Layout categories={categories} dir={dir} className="container mx-auto px-3 md:max-w-[90%] lg:max-w-[80%]">
+    <div className=" py-10">
       <BreadCrumbs data={[{title:"Home",href:"/"},{title:categoryDetail.title,href:`/${titleToSlugConverter(categoryDetail.title)}`}]} />
       <p className="yellow md:pt-5 font-semibold">{data.length} CATEGORIES</p>
       <Heading className={"text-3xl my-4"}>{categoryDetail.title}</Heading>

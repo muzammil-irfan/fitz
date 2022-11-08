@@ -23,8 +23,8 @@ export default function SubCategory({
     return <p>Loading...</p>;
   }
   return (
-    <Layout dir={dir} categories={categories} className="container mx-auto">
-      <div className="px-4 py-10">
+    <Layout dir={dir} categories={categories} className="container mx-auto md:max-w-[90%] lg:max-w-[80%] px-3">
+      <div className=" py-10">
         <BreadCrumbs data={[{title:"Home",href:"/"},{title:categoryName,href:`/${titleToSlugConverter(categoryName)}`},{title:subCategory.title,href:`/${titleToSlugConverter(subCategory.title)}`}]} />
         <p className="yellow py-5 font-semibold">
           {profiles.length + " " + categoryName.toUpperCase()}{" "}

@@ -12,11 +12,11 @@ export default function Header({ categories }) {
   const [sidebar, setSidebar] = useState(false);
   const intl = useIntl();
   return (
-    <div className="py-5 shadow-md sticky top-0 bg-white px-2 md:px-4 z-[99]">
+    <div className="py-5 shadow-md sticky top-0 bg-white px-2 md:px-4 z-[99] ">
       <div className="flex md:hidden justify-between px-5 items-center mx-auto ">
         <Link href="/">
           <a>
-        <img src="/logo-small.png" />
+            <img src="/logo-small.png" />
           </a>
         </Link>
         <TbMenu
@@ -96,13 +96,14 @@ export default function Header({ categories }) {
         })}
       </div>
       {/* Desktop header */}
-      <div className="hidden md:flex  justify-around ">
+      <div className="hidden md:flex md:container md:mx-auto md:px-3 md:max-w-[90%] lg:max-w-[80%] md:justify-between">
+        <div className="flex items-center gap-16 w-[80%] ">
         <Link href="/">
           <a>
             <img src="/logo.png" className="" />
           </a>
         </Link>
-        <div className="flex items-center w-1/2 gap-8 lg:gap-12 ">
+        <div className="flex items-center  gap-8">
           {headerLinks.map((item) => {
             return (
               <HeaderLink
@@ -112,6 +113,7 @@ export default function Header({ categories }) {
               />
             );
           })}
+        </div>
         </div>
         <div className="flex  items-center justify-center ">
           <Link href={"/"} locale="en">

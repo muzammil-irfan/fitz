@@ -53,34 +53,34 @@ export default function ContactPage({ dir, categories }) {
     }
   };
   return (
-    <Layout categories={categories} dir={dir} className="container mx-auto px-2 sm:px-8  xl:px-16">
-      <div className="pl-2 md:pl-0 pb-10  md:pt-4">
+    <Layout categories={categories} dir={dir} className="container mx-auto px-2 sm:px-8 md:px-3 md:max-w-[90%] lg:max-w-[80%]">
+      <div className="pl-2 md:pl-0 pb-16  md:pt-6">
         <CommonToast />
 
-        <div className="mt-6 sm:mt-4 mb-6 sm:mb-10">
-          <Heading className={"sm:py-3 text-3xl"}>
+        <div className="mt-6 sm:mt-4 mb-6 ">
+          <Heading className={"sm:py-3 text-3xl  text-[32px]"}>
             <FormattedMessage
               id="page.contact.title"
               values={{ b: (chunks) => <b className="yellow">{chunks}</b> }}
             />
           </Heading>
-          <p className="py-5 md:w-1/2 text-sm md:text-md">
+          <p className="py-5 md:w-1/2 text-sm md:text-lg font-[400] ">
             <FormattedMessage
               id="page.contact.description"
               values={{ b: (chunks) => <b className="yellow">{chunks}</b> }}
             />
           </p>
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-2 items-center md:text-lg">
             <HiOutlineMail />
-            <p className="md:text-md">FitCornerz@gmail.com</p>
+            <p className="">FitCornerz@gmail.com</p>
           </div>
-          <div className="flex gap-2 items-center py-3">
+          <div className="flex gap-2 items-center py-3 md:text-lg">
             <IoCallOutline />
-            <p className="md:text-md">00962798907906</p>
+            <p className="">+962798907906</p>
           </div>
         </div>
         <div className=" lg:w-2/3">
-          <Heading className={"py-3 sm:py-6 text-3xl"}>
+          <Heading className={"py-3 sm:py-6 text-3xl  text-[32px]"}>
             <FormattedMessage
               id="page.contact.form.title"
               values={{ b: (chunks) => <b className="yellow">{chunks}</b> }}
@@ -131,10 +131,11 @@ export default function ContactPage({ dir, categories }) {
               onChange={handleChange}
             />
           </div>
-          <div className="sm:flex justify-end my-3 pr-3 sm:px-3 sm:pr-0  ">
-            <CustomButton onClick={handleSubmit} className="w-full sm:w-min">
+          <div className="sm:flex justify-end my-3 pr-3 sm:px-3 sm:pr-0  w-full">
+            
+            <button onClick={handleSubmit} className=" bg-brand w-full text-white py-3 sm:w-[120px] text-lg" >
               <FormattedMessage id="page.contact.form.submit" />
-            </CustomButton>
+            </button>
           </div>
         </div>
       </div>

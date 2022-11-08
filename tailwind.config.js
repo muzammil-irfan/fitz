@@ -11,6 +11,9 @@ module.exports = {
     extend: {
       colors: {
         "brand":"#FBAC18"
+      },
+      fontFamily:{
+        "body":"Montserrat, sans-serif"
       }
     },
   },

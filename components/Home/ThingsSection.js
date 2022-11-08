@@ -12,7 +12,7 @@ export default function ThingsSection() {
         </div>
         <div className='flex flex-col gap-5 w-1/2 md:w-1/3 justify-center'>
             <Heading className={"text-xl"}>
-            <FormattedMessage id="page.home.thingsSection1.title"  />
+            <FormattedMessage id="page.home.thingsSection1.title"   />
             </Heading>
             <Text className='text-slate-500 '>
             <FormattedMessage id="page.home.thingsSection1.description"  />

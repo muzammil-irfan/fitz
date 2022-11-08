@@ -20,9 +20,9 @@ export default function BMIPage({ dir, categories }) {
     <Layout
       categories={categories}
       dir={dir}
-      className="container mx-auto px-4 "
+      className="container mx-auto px-3 md:max-w-[90%] lg:max-w-[80%]"
     >
-      <div className="py-10">
+      <div className="pb-10 md:pt-10">
         <Heading className={"py-5 text-4xl"}>
           <FormattedMessage
             id="page.bmi.title"
@@ -53,7 +53,7 @@ export default function BMIPage({ dir, categories }) {
           <AdultTable />
         </div>
         <div className="xl:flex justify-between my-5">
-          <div className="py-5 md:w-1/2">
+          <div className="pb-5 md:w-1/2">
             <h3 className="text-xl  mb-5 font-bold">
               <FormattedMessage id="page.bmi.children.title" />
             </h3>

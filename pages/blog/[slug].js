@@ -16,11 +16,8 @@ export default function Blog({ dir, categories, post, blogs }) {
   }
   return (
     <Layout dir={dir} categories={categories} className="">
-      {/* <div className="py-5">
-      <BreadCrumbs data={[{title:"Home",href:"/"},{title:"Blogs",href:"/blog"},{title:post.title,href:`/${titleToSlugConverter(post.title)}`}]} />
-      </div> */}
-      <div className="pt-10 ">
-        <div className="flex flex-col sm:flex-row-reverse sm:justify-around px-3 pb-5">
+      <div className=" pt-6 md:pt-12 ">
+        <div className="flex flex-col sm:flex-row-reverse sm:justify-around md:justify-between md:container md:mx-auto md:max-w-[90%] lg:max-w-[80%] px-3 pb-5">
           <div className="aspect-square m-2 relative sm:w-1/2 sm:m-5 max-w-[450px] ">
             <CustomImage
               src={post.media[0] && post.media[0]}
@@ -32,7 +29,7 @@ export default function Blog({ dir, categories, post, blogs }) {
           </div>
         </div>
         <div className="bg-[#F8F8F8] pt-3 pb-12 px-3">
-          <div className="container mx-auto">
+          <div className="container mx-auto md:max-w-[90%] lg:max-w-[80%]">
           <BlogSection data={blogs.filter((item) => item.id !== post.id)} />
           </div>
         </div>

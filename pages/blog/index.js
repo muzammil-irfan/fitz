@@ -11,8 +11,8 @@ export default function Blog({ dir,categories,posts }) {
     return <div>Loading...</div>
   }
   return (
-    <Layout dir={dir} categories={categories} className="container mx-auto">
-    <div className="grid md:grid-cols-3 my-5">
+    <Layout dir={dir} categories={categories} className="container mx-auto px-3 md:max-w-[90%] lg:max-w-[80%]">
+    <div className="grid md:grid-cols-3 my-6 md:my-12">
       {posts.length > 0 ? (
         posts.map((item) => {
           return (

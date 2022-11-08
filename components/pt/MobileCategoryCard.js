@@ -15,20 +15,20 @@ export default function MobileCategoryCard({
   location,
 }) {
   return (
-    <div className=" sm:hidden shadow-lg m-2 p-4" style={{cursor:"pointer"}}>
+    <div className=" md:hidden shadow-lg m-2 p-4" style={{cursor:"pointer"}}>
       <Link href={href}>
         <a>
         <div className="flex ">
-          <div className="w-2/3  relative aspect-square">
+          <div className="w-1/3 sm:1/2 relative aspect-square">
             <Image
               src={imageSrc}
               alt={imageAlt}
               layout="fill"
             />
           </div>
-          <div className=" px-3 w-full">
+          <div className=" pl-6 w-full">
             <p className="text-lg font-bold ">{title}</p>
-            <div className="flex gap-3 yellow py-4 ">
+            <div className="flex text-2xl gap-6 yellow py-4 ">
               <BsFacebook />
               <BsInstagram />
             </div>

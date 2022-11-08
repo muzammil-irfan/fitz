@@ -55,7 +55,7 @@ export default function BMIForm() {
     }
   };
   return (
-    <div className="grid md:grid-cols-2 lg:w-2/3 gap-5 sm:gap-10 my-6">
+    <div className="grid md:grid-cols-2 lg:w-2/3 gap-5 sm:gap-10 my-6 md:my-10">
       <CustomInputBox
         label={intl.formatMessage({ id: "page.bmi.form.age" })}
         type="number"
@@ -162,10 +162,10 @@ export default function BMIForm() {
         value={values.email}
         onChange={handleChange}
       />
-      <div className="flex justify-end items-center  gap-5 flex-col-reverse md:flex-row  ">
+      <div className="flex justify-end items-center  gap-6 flex-col-reverse md:flex-row  ">
         <div className="w-full md:w-min">
           <button
-            className="px-6 py-2 yellow yellow-border w-full md:w-max"
+            className="px-6 py-3 yellow yellow-border w-full md:w-max"
             onClick={() => {
               setValues(initialValues);
             }}
@@ -175,7 +175,7 @@ export default function BMIForm() {
         </div>
         <div className=" w-full md:w-min">
           <button
-            className="yellow-background px-4 py-2 w-full md:w-max "
+            className="yellow-background px-4 py-3 w-full md:w-max "
             onClick={handleSubmit}
           >
             <FormattedMessage id="page.bmi.form.calculate" />

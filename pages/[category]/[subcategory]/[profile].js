@@ -75,9 +75,9 @@ export default function Lena({
       <Layout
         dir={dir}
         categories={categories}
-        className={`container mx-auto pb-8 ${modal ? "overflow-hidden" : ""}`}
+        className={`container mx-auto pb-8  md:max-w-[90%] lg:max-w-[80%] px-3 ${modal ? "overflow-hidden" : ""}`}
       >
-        <div className="p-5">
+        <div className="py-5">
           <BreadCrumbs
             data={[
               { title: "Home", href: "/" },
@@ -113,14 +113,14 @@ export default function Lena({
             </div>
             <div className="pl-5 md:pl-8 pr-3 py-1  w-full">
               <div className="sm:flex  justify-between ">
-                <h2 className="text-xl sm:text-4xl  lg:text-5xl font-semibold ">
+                <h2 className="text-xl sm:text-4xl  lg:text-5xl font-[800] ">
                   {profiles.title}
                 </h2>
-                <div className="flex my-5 text-xl sm:my-3 gap-3 yellow">
-                  <a href={social_media["facebook"]}>
+                <div className="flex my-5 text-xl sm:my-3 gap-3 yellow " >
+                  <a href={social_media["facebook"]} style={{cursor:"pointer"}}>
                     <BsFacebook />
                   </a>
-                  <a href={social_media["instagram"]}>
+                  <a href={social_media["instagram"]} style={{cursor:"pointer"}}>
                     <BsInstagram />
                   </a>
                 </div>
@@ -141,7 +141,7 @@ export default function Lena({
               contact={profiles.phone_number}
             />
           </div>
-          <div className="py-4 md:mt-5 relative" style={{cursor:"grab"}}>
+          <div className="py-4 md:mt-5 relative pr-1 overflow-hidden" style={{cursor:"grab"}}>
             {media?.length > 0 && (
               <Slider {...settings}>
                 {[...media,...media].map((item, index) => {
@@ -149,7 +149,7 @@ export default function Lena({
                 })}
               </Slider>
             )}
-            <div className="h-full w-[50px] top-0 right-[0]  absolute " style={{background:"linear-gradient(90deg,rgba(255,255,255,0) 0%, rgba(255,255,255,1) 90%)"}}></div>
+            <div className="h-full w-[50px] top-0  right-[0]  absolute " style={{background:"linear-gradient(90deg,rgba(255,255,255,0) 0%, rgba(255,255,255,1) 90%)"}}></div>
           </div>
           <div className="my-4">
             <Heading className="text-3xl font-black py-3">More Details</Heading>
@@ -190,13 +190,13 @@ const CotentBox = ({ description, email, contact }) => {
   return (
     <div className="">
       <p className="my-3">{description}</p>
-      <div className="sm:flex sm:gap-5 md:my-5">
-        <div className="my-2 flex gap-2 items-center">
-          <MdMailOutline />
-          <a href={`mailto:${email}`}>{email}</a>
+      <div className="sm:flex  sm:gap-5 md:my-5 text-sm">
+        <div className="my-2  flex gap-4 items-center">
+          <MdMailOutline size="18px" />
+          <a href={`mailto:${email}`} >{email}</a>
         </div>
-        <div className="my-2 flex gap-2 items-center">
-          <BiPhone />
+        <div className="my-2 flex gap-4 items-center">
+          <BiPhone size="18px" />
           <a href={`tel:${contact}`}>{contact}</a>
         </div>
       </div>
