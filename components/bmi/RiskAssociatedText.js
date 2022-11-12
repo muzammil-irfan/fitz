@@ -1,4 +1,3 @@
-import { list } from "postcss";
 import React from "react";
 //This is common component used for overweight and underweight section of bmi
 export default function RiskAssociatedText({ title, description, points }) {

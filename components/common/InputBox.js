@@ -8,7 +8,6 @@ export default function InputBox({
   placeholder,
   type,
   checked,
-  className
 }) {
   return (
     <div className="">

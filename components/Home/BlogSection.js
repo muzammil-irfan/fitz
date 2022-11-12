@@ -51,12 +51,11 @@ export default function BlogSection({ data }) {
 
   return (
     <div className="sm:text-center overflow-hidden px-2 ">
-      <Heading className={"text-3xl my-5 lg:my-10"}>
-        {/* From Our <span className="yellow">Blogs</span> */}
+      <Heading className={"text-3xl my-5 lg:my-10 xl:text-[56px]"}>
         <FormattedMessage id="page.home.blogSection.title" values={{b:(chunks)=><span className="yellow">{chunks}</span>}} />
       </Heading>
       <div className="my-5 md:my-10">
-      {data && data.length > 1 ? (
+      {data && data.length > 1   ? (
         <div style={{cursor:"grab"}} >
         <Slider {...settings}>
           {data.map((item) => {
@@ -72,15 +71,17 @@ export default function BlogSection({ data }) {
         </Slider>
         </div>
       ) : data.length > 0 ? (
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 ">
+        <div className="flex justify-center flex-wrap">
           {data.map((item) => {
             return (
+              <div className="max-w-[360px]" key={item.slug}>
               <BlogCard
-                key={item.slug}
+                
                 href={`/blog/${item.slug}`}
                 imageSrc={item.media[0]}
                 title={item.title}
               />
+              </div>
             );
           })}
         </div>

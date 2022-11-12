@@ -205,16 +205,7 @@ const CotentBox = ({ description, email, contact }) => {
 };
 export async function getStaticPaths() {
   const returnObj = {
-    paths: [
-      {
-        params: {
-          category: "/physio-therapists",
-          subcategory: "/certified-physiotherapist-without-cente",
-          profile: "/ehab-1",
-        },
-        locale: "en",
-      },
-    ],
+    paths: [],
     fallback: true,
   };
   return returnObj;

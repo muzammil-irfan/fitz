@@ -1,8 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Heading from "../../components/common/Heading";
-import Text from "../../components/common/Text";
 import axios from "axios";
 import backendHost from "../../utils/backendHost";
 import titleToSlugConverter from "../../utils/titleToSlugConverter";
@@ -14,7 +12,6 @@ import BreadCrumbs from "../../components/common/BreadCrumbs";
 
 export default function Category({ dir,categories,data,categoryDetail }) {
   const router = useRouter();
-  console.log(categoryDetail)
   if (!data) {
     return <div>Loading...</div>;
   }
@@ -70,16 +67,7 @@ export async function getStaticPaths() {
       params: { category: titleToSlugConverter(item.title) },
       locale:"en"
     }));
-    const categoriesAr = await axios.get(`${backendHost}/category`,{
-      headers:{
-        "Accept-Language":"ar"
-      }
-    });
-    const slugAr = categoriesAr.data.map((item) => ({
-      params: { category: titleToSlugConverter(item.title) },
-      locale:"ar"
-    }));
-    returnObj.paths = [...slugEn,...slugAr];
+    returnObj.paths = [...slugEn];
     return returnObj;
   } catch (err) {
     console.log("err", err);

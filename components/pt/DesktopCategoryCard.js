@@ -1,10 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import { BsFacebook, BsInstagram } from "react-icons/bs";
-import { BiMap, BiDollarCircle } from "react-icons/bi";
-import { TbWorld } from "react-icons/tb";
+import { BiMap } from "react-icons/bi";
 import Link from "next/link";
-import titleToSlugConverter from "../../utils/titleToSlugConverter";
 
 export default function DesktopCategoryCard({
   href,

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 
 function CustomImage({alt, ...props}) {
@@ -16,7 +15,7 @@ function CustomImage({alt, ...props}) {
           placeholder="blur"
           blurdataurl="/error.png"
           objectFit="contain"
-          className="img max-h-[180px] lg:max-h-[250px] overflow-hidden"
+          className=" overflow-hidden"
         />
       </picture>
     );

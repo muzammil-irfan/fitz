@@ -1,8 +1,6 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-import { Context } from "react-intl/src/components/injectIntl";
+import React from "react";
 import BlogCard from "../../components/common/BlogCard";
-import BreadCrumbs from "../../components/common/BreadCrumbs";
 import Layout from "../../components/Layout";
 import backendHost from "../../utils/backendHost";
 

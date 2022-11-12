@@ -44,19 +44,15 @@ export async function getStaticProps(context) {
     blogs: [],
   };
   try {
-    //To obtain slug from category
     const { locale } = context;
-    // const config = {
-    //   headers:{
-    //     "Accept-Language":locale
-    //   }
-    // }
     const categories = await axios.get(`${backendHost}/category`, {
       headers: {
         "Accept-Language": locale,
       },
     });
+    //Passing categories to be used in header and footer
     props.categories = [...categories.data];
+    //To use blog in blogsection
     const blogs = await axios.get(`${backendHost}/blog`, {
       headers: {
         "Accept-Language": locale,
@@ -64,7 +60,7 @@ export async function getStaticProps(context) {
     });
     props.blogs = [...blogs.data];
 
-    return { props };
+    return { props, revalidate:10 };
   } catch (err) {
     console.log(err);
     return { props };

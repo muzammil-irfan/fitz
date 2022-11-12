@@ -81,7 +81,7 @@ const LinkDisplayer = ({ name, href, className }) => {
     <Link href={href}>
       <a>
         <p
-          className={`break-all  md:text-xs my-2 md:pr-1 ${
+          className={`w-full overflow-hidden  md:text-md my-2 md:pr-1 font-[600]  ${
             className && className
           }`}
         >

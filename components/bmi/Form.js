@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import backendHost from "../../utils/backendHost";
-import CustomButton from "../common/CustomButton";
-// import InputBox from "../common/InputBox";
 import axios from "axios";
 import CommonToast from "../common/CommonToast";
 import { toast } from "react-toastify";
@@ -165,7 +163,7 @@ export default function BMIForm() {
       <div className="flex justify-end items-center  gap-6 flex-col-reverse md:flex-row  ">
         <div className="w-full md:w-min">
           <button
-            className="px-6 py-3 yellow yellow-border w-full md:w-max"
+            className="px-6 py-3 yellow yellow-border w-full md:w-max hover:bg-[#FED382]"
             onClick={() => {
               setValues(initialValues);
             }}
@@ -175,7 +173,7 @@ export default function BMIForm() {
         </div>
         <div className=" w-full md:w-min">
           <button
-            className="yellow-background px-4 py-3 w-full md:w-max "
+            className="yellow-background px-4 py-3 w-full md:w-max hover:bg-[#FED382]"
             onClick={handleSubmit}
           >
             <FormattedMessage id="page.bmi.form.calculate" />

@@ -42,7 +42,7 @@ export default function BannerSection() {
                   <img
                     src={item.url}
                     alt={item.alt}
-                    className="img max-h-[50vw] sm:max-h-[300px] md:max-h-[400px] lg:max-h-[500px] xl:max-h-[600px] 2xl:max-h-[700px]"
+                    className="img max-h-[50vw] sm:max-h-[300px] md:max-h-[400px] lg:max-h-[500px] xl:max-h-[700px] 2xl:min-h-[900px]"
                   />
                 </picture>
               </div>
@@ -79,7 +79,15 @@ const bannerData = [
     alt: "banner",
   },
   {
-    url: "/home/football-player.png",
+    url: "/home/banner-2.png",
     alt: "banner",
   },
+  {
+    url: "/home/banner-3.png",
+    alt: "banner",
+  },
+  {
+    url: "/home/banner-4.png",
+    alt: "banner",
+  }
 ];

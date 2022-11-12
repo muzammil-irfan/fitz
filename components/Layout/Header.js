@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { TbMenu } from "react-icons/tb";
 import { MdOutlineClose } from "react-icons/md";
-// import { CategoriesContext } from "../context/categories";
 import titleToSlugConverter from "../../utils/titleToSlugConverter";
 import { FormattedMessage, useIntl } from "react-intl";
 
@@ -12,7 +11,7 @@ export default function Header({ categories }) {
   const [sidebar, setSidebar] = useState(false);
   const intl = useIntl();
   return (
-    <div className="py-5 shadow-md sticky top-0 bg-white px-2 md:px-4 z-[99] ">
+    <div className="py-5 md:py-9 shadow-md sticky top-0 bg-white px-2 md:px-4 z-[99] ">
       <div className="flex md:hidden justify-between px-5 items-center mx-auto ">
         <Link href="/">
           <a>

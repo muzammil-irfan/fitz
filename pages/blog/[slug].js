@@ -1,14 +1,9 @@
+import React from "react";
 import axios from "axios";
-import Image from "next/image";
-// import postcss from "postcss";
-import React, { useState, useEffect } from "react";
-import BlogCard from "../../components/common/BlogCard";
-import BreadCrumbs from "../../components/common/BreadCrumbs";
 import CustomImage from "../../components/common/CustomImage";
 import BlogSection from "../../components/Home/BlogSection";
 import Layout from "../../components/Layout";
 import backendHost from "../../utils/backendHost";
-import titleToSlugConverter from "../../utils/titleToSlugConverter";
 
 export default function Blog({ dir, categories, post, blogs }) {
   if (!post || !blogs) {
@@ -49,11 +44,11 @@ export async function getStaticPaths() {
         "Accept-Language": "en",
       },
     });
-    const blogAr = await axios.get(`${backendHost}/blog`, {
-      headers: {
-        "Accept-Language": "ar",
-      },
-    });
+    // const blogAr = await axios.get(`${backendHost}/blog`, {
+    //   headers: {
+    //     "Accept-Language": "ar",
+    //   },
+    // });
     const pathsEn =
       blog.data?.length > 0
         ? blog.data.map((item) => ({
@@ -61,14 +56,14 @@ export async function getStaticPaths() {
             locale: "en",
           }))
         : { params: {} };
-    const pathsAr =
-      blogAr.data?.length > 0
-        ? blogAr.data.map((item) => ({
-            params: { slug: item.slug },
-            locale: "ar",
-          }))
-        : { params: {} };
-    returnObj.paths = [...pathsEn, ...pathsAr];
+    // const pathsAr =
+    //   blogAr.data?.length > 0
+    //     ? blogAr.data.map((item) => ({
+    //         params: { slug: item.slug },
+    //         locale: "ar",
+    //       }))
+    //     : { params: {} };
+    returnObj.paths = [...pathsEn];
     return returnObj;
   } catch (err) {
     console.log(err);

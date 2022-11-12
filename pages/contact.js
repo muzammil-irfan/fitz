@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import Heading from "../components/common/Heading";
-import Text from "../components/common/Text";
 import { HiOutlineMail } from "react-icons/hi";
 import { IoCallOutline } from "react-icons/io5";
-import CustomButton from "../components/common/CustomButton";
 import axios from "axios";
 import backendHost from "../utils/backendHost";
 import { toast } from "react-toastify";
@@ -53,7 +51,11 @@ export default function ContactPage({ dir, categories }) {
     }
   };
   return (
-    <Layout categories={categories} dir={dir} className="container mx-auto px-2 sm:px-8 md:px-3 md:max-w-[90%] lg:max-w-[80%]">
+    <Layout
+      categories={categories}
+      dir={dir}
+      className="container mx-auto px-2 sm:px-8 md:px-3 md:max-w-[90%] lg:max-w-[80%]"
+    >
       <div className="pl-2 md:pl-0 pb-16  md:pt-6">
         <CommonToast />
 
@@ -132,8 +134,10 @@ export default function ContactPage({ dir, categories }) {
             />
           </div>
           <div className="sm:flex justify-end my-3 pr-3 sm:px-3 sm:pr-0  w-full">
-            
-            <button onClick={handleSubmit} className=" bg-brand w-full text-white py-3 sm:w-[120px] text-lg" >
+            <button
+              onClick={handleSubmit}
+              className=" bg-brand w-full text-white py-3 sm:w-[120px] text-lg"
+            >
               <FormattedMessage id="page.contact.form.submit" />
             </button>
           </div>
@@ -150,7 +154,7 @@ const CustomInputBox = ({
   value,
   placeholder,
   type,
-  checked
+  checked,
 }) => {
   return (
     <div className="">
@@ -163,26 +167,25 @@ const CustomInputBox = ({
         onChange={onChange}
         type={type}
         checked={checked}
-        
       />
     </div>
   );
-}
+};
 
 export async function getStaticProps(context) {
   const props = {
     categories: [],
   };
   try {
-    //To obtain slug from category
-    const categories = await axios.get(`${backendHost}/category`,{
-      headers:{
-        "Accept-Language":context.locale
-      }
+    const categories = await axios.get(`${backendHost}/category`, {
+      headers: {
+        "Accept-Language": context.locale,
+      },
     });
+    //Passing categories for footer page
     props.categories = [...categories.data];
 
-    return { props };
+    return { props, revalidate: 10 };
   } catch (err) {
     console.log(err);
     return { props };

@@ -78,7 +78,7 @@ export default function SubCategory({
 
 export async function getStaticPaths() {
   const returnObj = {
-    paths: [{ params: { category: "/courts", subcategory: "/soccer" } }],
+    paths: [],
     fallback: true,
   };
   try {
@@ -90,12 +90,12 @@ export async function getStaticPaths() {
         "Accept-Language": "en",
       },
     });
-    const arrOfRequests = categoriesEn.data.map((item) =>
+    const arrOfRequests = categoriesEn.length > 0 ? categoriesEn.data.map((item) =>
       axios.get(`${backendHost}/category/${item.id}`)
-    );
+    ) : [];
     const subCategories = await Promise.all(arrOfRequests);
     const possibleSlugs = [];
-    categories.data.map((categoryData) => {
+    categoriesEn.data.map((categoryData) => {
       subCategories.map((subCategoryItem) => {
         if (subCategoryItem.data[0]) {
           if (categoryData.id === subCategoryItem.data[0].parent_id) {
@@ -105,13 +105,6 @@ export async function getStaticPaths() {
                   category: `/${titleToSlugConverter(categoryData.title)}`,
                   subcategory: `/${titleToSlugConverter(item.title)}`,
                   locale: "en",
-                },
-              });
-              possibleSlugs.push({
-                params: {
-                  category: `/${titleToSlugConverter(categoryData.title)}`,
-                  subcategory: `/${titleToSlugConverter(item.title)}`,
-                  locale: "ar",
                 },
               });
             });
@@ -165,7 +158,7 @@ export async function getStaticProps(context) {
       }
     });
     const partnersData = await axios.get(
-      `${backendHost}/partner/${subCategoryId}`, //subCategoryId
+      `${backendHost}/partner/${subCategoryId}`, 
       config
     );
     props.profiles = partnersData.data;

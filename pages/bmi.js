@@ -1,15 +1,10 @@
-import React, { Suspense } from "react";
+import React from "react";
 import Heading from "../components/common/Heading";
 import BMIForm from "../components/bmi/Form";
-// import DesktopSection from "../components/bmi/DesktopSection";
-// import MobileSection from "../components/bmi/MobileSection";
 import UnderweightSection from "../components/bmi/UnderweightSection";
-import Content from "../components/bmi/Content";
 import Layout from "../components/Layout";
 import OverweightSection from "../components/bmi/OverweightSection";
-// import AdultSection from "../components/bmi/AdultSection";
-// import ChildrenSection from "../components/bmi/ChildrenSection";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import axios from "axios";
 import backendHost from "../utils/backendHost";
 import AdultTable from "../components/bmi/AdultTable";
@@ -83,7 +78,7 @@ export async function getStaticProps(context) {
     });
     props.categories = [...categories.data];
 
-    return { props };
+    return { props, revalidate: 10 };
   } catch (err) {
     console.log(err);
     return { props };
