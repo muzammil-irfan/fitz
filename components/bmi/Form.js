@@ -64,11 +64,11 @@ export default function BMIForm() {
       />
       <div>
         <CommonToast />
-        <p className="font-semibold">
+        <p className="font-semibold text-xs" >
           <FormattedMessage id="page.bmi.form.gender" />
         </p>
-        <div class="radio-container">
-          <span class="radio-subcontainer">
+        <div className="radio-container">
+          <span className="radio-subcontainer">
             <input
               type="radio"
               id="male"
@@ -77,14 +77,14 @@ export default function BMIForm() {
               checked={values.gender == "m"}
               onChange={handleRadioChange}
             />
-            <label for="male">
+            <label htmlFor="male">
               <FormattedMessage id="page.bmi.form.male" />
             </label>
 
-            <div class="check"></div>
+            <div className="check"></div>
           </span>
 
-          <span class="radio-subcontainer">
+          <span className="radio-subcontainer">
             <input
               type="radio"
               id="female"
@@ -93,11 +93,11 @@ export default function BMIForm() {
               checked={values.gender == "f"}
               onChange={handleRadioChange}
             />
-            <label for="female">
+            <label htmlFor="female">
               <FormattedMessage id="page.bmi.form.female" />
             </label>
 
-            <div class="check"></div>
+            <div className="check"></div>
           </span>
         </div>
         <ul
@@ -113,11 +113,11 @@ export default function BMIForm() {
               checked={values.gender == "m"}
               onChange={handleChange}
             />
-            <label for="male">
+            <label htmlFor="male">
               <FormattedMessage id="page.bmi.form.male" />
             </label>
 
-            <div class="check"></div>
+            <div className="check"></div>
           </li>
           <li className="radio-subcontainer ">
             <input
@@ -128,11 +128,11 @@ export default function BMIForm() {
               checked={values.gender == "f"}
               onChange={handleChange}
             />
-            <label for="female">
+            <label htmlFor="female">
               <FormattedMessage id="page.bmi.form.female" />
             </label>
 
-            <div class="check"></div>
+            <div className="check"></div>
           </li>
         </ul>
       </div>
@@ -163,7 +163,7 @@ export default function BMIForm() {
       <div className="flex justify-end items-center  gap-6 flex-col-reverse md:flex-row  ">
         <div className="w-full md:w-min">
           <button
-            className="px-6 py-3 yellow yellow-border w-full md:w-max hover:bg-[#FED382]"
+            className=" py-3 yellow yellow-border w-full md:w-[120px] hover:bg-[#FED382]"
             onClick={() => {
               setValues(initialValues);
             }}
@@ -173,7 +173,7 @@ export default function BMIForm() {
         </div>
         <div className=" w-full md:w-min">
           <button
-            className="yellow-background px-4 py-3 w-full md:w-max hover:bg-[#FED382]"
+            className="yellow-background  py-3 w-full md:w-[120px] hover:bg-[#FED382]"
             onClick={handleSubmit}
           >
             <FormattedMessage id="page.bmi.form.calculate" />
@@ -196,7 +196,7 @@ const CustomInputBox = ({
 }) => {
   return (
     <div className="">
-      <p className="font-bold text-sm">{label}</p>
+      <p className="font-semibold text-xs">{label}</p>
       <input
         name={name}
         className="w-full border-slate-100 my-1 border p-4"

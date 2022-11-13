@@ -6,7 +6,7 @@ export default function AdultTable() {
     const router = useRouter();
   return (
     <div className='py-5 sm:py-0'>
-        <table className='text-xs w-full sm:text-sm md:text-md md:w-[500px]'> 
+        <table className='text-xs w-full sm:text-sm md:text-base md:w-[450px] mb-3'> 
             <tr className='text-center bg-[#e7e8e8]'>
                 <th className='py-4 border-r border-white font-[600]'>
                     <FormattedMessage id="page.bmi.adult.table.title.category" />

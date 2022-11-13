@@ -10,16 +10,18 @@ export default function Blog({ dir,categories,posts }) {
   }
   return (
     <Layout dir={dir} categories={categories} className="container mx-auto px-3 md:max-w-[90%] lg:max-w-[80%]">
-    <div className="grid md:grid-cols-3 my-6 md:my-12">
+    <div className="flex flex-wrap justify-start my-6 md:my-12">
       {posts.length > 0 ? (
         posts.map((item) => {
           return (
+            <div className="max-w-[360px] my-2" key={item.id}>
             <BlogCard
               key={item.id}
               href={`/blog/${item.slug}`}
               imageSrc={item.media[0]}
               title={item.title}
             />
+            </div>
           );
         })
       ) : (

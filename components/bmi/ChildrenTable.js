@@ -6,7 +6,7 @@ export default function ChildrenTable() {
     const router = useRouter();
   return (
     <div className="py-5 md:py-0">
-      <table className="text-xs w-full sm:text-sm md:text-md md:w-[500px]">
+      <table className="text-xs w-full sm:text-sm md:text-md md:w-[450px] mb-3">
         <tr className="text-center bg-[#e7e8e8]">
           <th className="w-52 py-4 border-r border-white font-[600]">
             <FormattedMessage id="page.bmi.children.table.title.category" />

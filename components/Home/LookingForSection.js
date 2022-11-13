@@ -60,8 +60,8 @@ export default function LookingForSection({ data }) {
           values={{ b: (chunks) => <span className="yellow">{chunks}</span> }}
         />
       </Heading>
-      <div className="pt-10 lg:px-5 relative  " style={{cursor:"grab"}}>
-          <div className="h-full w-[50px] top-0 left-[0] z-10 absolute " style={{background:"linear-gradient(90deg,rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%)"}}></div>
+      <div className="pt-10 lg:mx-5 relative  " style={{cursor:"grab"}}>
+          <div className="h-full w-[50px] top-0 left-0 z-10 absolute " style={{background:"linear-gradient(90deg,rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%)"}}></div>
         <Slider {...settings}>
           {data.map((item) => {
             return (
@@ -76,7 +76,7 @@ export default function LookingForSection({ data }) {
             );
           })}
         </Slider>
-        <div className="h-full w-[50px] top-0 right-[0]  absolute " style={{background:"linear-gradient(90deg,rgba(255,255,255,0) 0%, rgba(255,255,255,1) 90%)"}}></div>
+        <div className="h-full w-[50px] top-0 right-0 z-10   absolute " style={{background:"linear-gradient(90deg,rgba(255,255,255,0) 0%, rgba(255,255,255,1) 90%)"}}></div>
       </div>
     </div>
   );

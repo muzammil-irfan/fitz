@@ -114,10 +114,10 @@ export default function Header({ categories }) {
           })}
         </div>
         </div>
-        <div className="flex  items-center justify-center ">
+        <div className="flex  items-center justify-center">
           <Link href={"/"} locale="en">
             <a>
-              <p className={` ${router.locale === "en" && "yellow"}`}>
+              <p className={`font-[500] ${router.locale === "en" && "yellow"}`}>
                 English
               </p>
             </a>
@@ -125,7 +125,7 @@ export default function Header({ categories }) {
           <p className="mx-2">|</p>
           <Link href={"/"} locale="ar">
             <a>
-              <p className={` ${router.locale === "ar" && "yellow"}`}> عربی</p>
+              <p className={`font-[500] ${router.locale === "ar" && "yellow"}`}> عربی</p>
             </a>
           </Link>
         </div>

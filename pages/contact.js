@@ -60,7 +60,7 @@ export default function ContactPage({ dir, categories }) {
         <CommonToast />
 
         <div className="mt-6 sm:mt-4 mb-6 ">
-          <Heading className={"sm:py-3 text-3xl  text-[32px]"}>
+          <Heading className={"sm:py-3 text-3xl xl:text-[56px] text-[32px]"}>
             <FormattedMessage
               id="page.contact.title"
               values={{ b: (chunks) => <b className="yellow">{chunks}</b> }}
@@ -73,16 +73,16 @@ export default function ContactPage({ dir, categories }) {
             />
           </p>
           <div className="flex gap-2 items-center md:text-lg">
-            <HiOutlineMail />
+            <HiOutlineMail size="24px" />
             <p className="">FitCornerz@gmail.com</p>
           </div>
           <div className="flex gap-2 items-center py-3 md:text-lg">
-            <IoCallOutline />
+            <IoCallOutline size="24px" />
             <p className="">+962798907906</p>
           </div>
         </div>
         <div className=" lg:w-2/3">
-          <Heading className={"py-3 sm:py-6 text-3xl  text-[32px]"}>
+          <Heading className={"py-3 sm:py-6 text-3xl xl:text-[56px] text-[32px]"}>
             <FormattedMessage
               id="page.contact.form.title"
               values={{ b: (chunks) => <b className="yellow">{chunks}</b> }}
@@ -136,7 +136,7 @@ export default function ContactPage({ dir, categories }) {
           <div className="sm:flex justify-end my-3 pr-3 sm:px-3 sm:pr-0  w-full">
             <button
               onClick={handleSubmit}
-              className=" bg-brand w-full text-white py-3 sm:w-[120px] text-lg"
+              className=" bg-brand w-full text-white py-3 sm:w-[120px] text-lg hover:bg-[#FED382]"
             >
               <FormattedMessage id="page.contact.form.submit" />
             </button>
@@ -158,7 +158,7 @@ const CustomInputBox = ({
 }) => {
   return (
     <div className="">
-      <p className="font-semibold">{label}</p>
+      <p className="font-semibold text-xs">{label}</p>
       <input
         name={name}
         className="w-full md:w-full border-slate-100 my-2 border  p-4"
