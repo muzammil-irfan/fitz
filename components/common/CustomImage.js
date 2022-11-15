@@ -1,6 +1,6 @@
 import React from "react";
 
-function CustomImage({alt, ...props}) {
+function CustomImage({alt,className, ...props}) {
     const srcHref = !props.src.slice(0,1).includes("/") ? !props.src.slice(0,1).includes("h") ? "/" : props.src : props.src;
     const [src, setSrc] = React.useState(srcHref);
   
@@ -14,8 +14,9 @@ function CustomImage({alt, ...props}) {
           onError={() => setSrc('/error.png')}
           placeholder="blur"
           blurdataurl="/error.png"
-          objectFit="contain"
-          className=" overflow-hidden"
+          objectFit="cover"
+          className={`overflow-hidden ${className}`}
+
         />
       </picture>
     );

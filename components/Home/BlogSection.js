@@ -11,17 +11,16 @@ export default function BlogSection({ data }) {
   const {locale} = useRouter()
   const settings = {
     dots: false,
-    Infinity: false,
+    infinite: false,
     speed: 500,
-    slidesToShow: data.length > 2 ? 3 : data.length,
-    initialSlides: 0,
-    rtl:locale==="ar",
+    slidesToShow: 3,
+    initialSlide:0,
     responsive: [
       {
         breakpoint: 1500,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 2,
+          slidesToScroll: 3,
           
         },
       },
@@ -55,9 +54,9 @@ export default function BlogSection({ data }) {
         <FormattedMessage id="page.home.blogSection.title" values={{b:(chunks)=><span className="yellow">{chunks}</span>}} />
       </Heading>
       <div className="my-5 md:my-10">
-      {data && data.length > 1   ? (
+      {data && data.length > 0   ? (
         <div style={{cursor:"grab"}} >
-        <Slider {...settings}>
+        <Slider {...settings} rtl={true}>
           {data.map((item) => {
             return (
               <BlogCard
@@ -69,21 +68,6 @@ export default function BlogSection({ data }) {
             );
           })}
         </Slider>
-        </div>
-      ) : data.length > 0 ? (
-        <div className="flex justify-center flex-wrap">
-          {data.map((item) => {
-            return (
-              <div className="max-w-[360px]" key={item.slug}>
-              <BlogCard
-                
-                href={`/blog/${item.slug}`}
-                imageSrc={item.media[0]}
-                title={item.title}
-              />
-              </div>
-            );
-          })}
         </div>
       ) : (
         <div>No blogs posted yet</div>

@@ -10,6 +10,7 @@ export default function BlogCard({ href, imageSrc, title }) {
           <CustomImage
             src={imageSrc.length < 8 ? "/error.png" : imageSrc}
             alt=""
+            className="max-h-[180px] lg:max-h-[200px]"
           />
         </div>
       </Link>
